@@ -20,3 +20,7 @@ code {
 .posterRatio{
   aspect-ratio: 3/4;
 }
+
+.logoRatio{
+  aspect-ratio: 3/1;
+}
