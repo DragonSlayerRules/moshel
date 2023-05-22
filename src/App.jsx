@@ -34,7 +34,7 @@ function App() {
       setLoading(true);
       try {
         const resp = await fetch(
-          `http://www.omdbapi.com/?apikey=85f717e8&s=${input}&type=${
+          `https://www.omdbapi.com/?apikey=85f717e8&s=${input}&type=${
             type === "all" ? "" : type
           }&y=${year === "all" ? "" : year}`
         );
@@ -51,8 +51,8 @@ function App() {
   };
 
   const handleOpen = async (imdbID) => {
-    const insideChest = JSON.parse(localStorage?.getItem("chest"));
-    if (insideChest.indexOf(imdbID) === -1) {
+    const insideChest = await JSON.parse(localStorage?.getItem("chest"));
+    if (insideChest?.indexOf(imdbID) === -1) {
       setFavText("Add to favorite");
     } else {
       setFavText("saved");
@@ -60,7 +60,7 @@ function App() {
 
     try {
       const resp = await fetch(
-        `http://www.omdbapi.com/?apikey=85f717e8&i=${imdbID}`
+        `https://www.omdbapi.com/?apikey=85f717e8&i=${imdbID}`
       );
       const jsonData = await resp.json();
       setData(jsonData);
@@ -75,7 +75,7 @@ function App() {
 
       if (page >= 1 && count === "plus") {
         const resp = await fetch(
-          `http://www.omdbapi.com/?apikey=85f717e8&s=${input}&type=${
+          `https://www.omdbapi.com/?apikey=85f717e8&s=${input}&type=${
             type === "all" ? "" : type
           }&y=${year === "all" ? "" : year}&page=${page + 1}`
         );
@@ -84,7 +84,7 @@ function App() {
         setPage(page + 1);
       } else if (page > 1 && count === "minus") {
         const resp = await fetch(
-          `http://www.omdbapi.com/?apikey=85f717e8&s=${input}&type=${
+          `https://www.omdbapi.com/?apikey=85f717e8&s=${input}&type=${
             type === "all" ? "" : type
           }&y=${year === "all" ? "" : year}&page=${page - 1}`
         );
@@ -413,7 +413,13 @@ function App() {
             "movie not found"
           )
         ) : (
-          "loading"
+          <div className="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-4">
+            {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((unit) => (
+              <div key={unit}>
+                <div className="w-full aspect-[3/4] animate-pulse bg-gray-500"></div>
+              </div>
+            ))}
+          </div>
         )}
       </div>
     </>
