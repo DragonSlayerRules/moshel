@@ -9,7 +9,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #e3f6f5;
+  background-color: #F1F6F9;
 }
 
 code {
@@ -23,4 +23,14 @@ code {
 
 .logoRatio{
   aspect-ratio: 3/1;
+}
+
+@font-face {
+  font-family: 'revxRegular';
+  src: url('../public/RevxNeueDemo-Regular.ttf');
+}
+
+@font-face {
+  font-family: 'revxSemiBold';
+  src: url('../public/RevxNeueDemo-SemiBold.ttf');
 }
