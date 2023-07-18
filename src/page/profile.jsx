@@ -21,9 +21,8 @@ function Profile() {
       .then((response) => response.json())
       .then((response) => setData(response))
       .catch((err) => console.error(err));
-  }, []);
+  }, [params.userId]);
 
-  console.log(data);
 
   return (
     <div className="container mx-auto px-4 py-6 grid grid-cols-12 gap-4">

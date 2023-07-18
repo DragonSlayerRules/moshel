@@ -1,9 +1,11 @@
-import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
 import movieCard from "../components/movieCard";
+import React, { useEffect, useState } from "react";
+import { get } from "../service/service";
+import MovieCard from "../components/movieCard";
+// import Example from "../components/pagination";
 
 function Explore() {
-    const [genres, setGenres] = useState();
+  const [genres, setGenres] = useState();
   const [filter, setFilter] = useState();
   const [data, setdata] = useState();
 
@@ -35,15 +37,21 @@ function Explore() {
       .then((response) => setdata(response))
       .catch((err) => console.error(err));
 
-      fetch("https://api.themoviedb.org/3/genre/movie/list?language=en", options)
-      .then((response) => response.json())
-      .then((response) => setGenres(response.genres))
-      .catch((err) => console.error(err));
+    get
+      .getGenres()
+      .then((results) => {
+        setGenres(results);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   }, []);
+
+  console.log(genres);
 
   return (
     <div className="container mx-auto px-4 grid grid-cols-12 my-6 gap-4">
-      <div className="col-span-3 bg-secondary h-fit p-4">
+      <div className="col-span-4 sm:col-span-2 bg-secondary h-fit p-4 pb-7 rounded-2xl">
         <div className="text-2xl font-bold text-highlight">Filter</div>
         <select
           id="cars"
@@ -62,7 +70,13 @@ function Explore() {
           Search
         </button>
       </div>
-      <div className="col-span-9 grid grid-cols-3 gap-4">{movieCard(data?.results)}</div>
+      <div className="col-span-8 sm:col-span-10 ">
+        <div className="grid grid-cols-2 sm:grid-cols-5 gap-4">
+          <MovieCard data={data?.results} />
+          {/* {movieCard(data?.results)} */}
+        </div>
+        {/* {Example()} */}
+      </div>
     </div>
   );
 }

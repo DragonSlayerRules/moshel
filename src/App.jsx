@@ -11,6 +11,7 @@ import {
 import Explore from "./page/explore";
 import Profile from "./page/profile";
 import Auth from "./page/auth";
+import Test from "./page/test";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           <Route path="/profile/:userId" element={<Profile/>}/>
           <Route path="/auth" element={<Auth/>}/>
           <Route path="/error" element={<Error/>}/>
+          <Route path="/test" element={<Test/>}/>
 
           {/* <Route path="/details" component={<Details/>} /> */}
         </Routes>

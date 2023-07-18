@@ -1,19 +1,16 @@
 import React, { useState } from "react";
 import { BiSearch } from "react-icons/bi";
 import logo from "../assets/frameWhite.png";
-import lan from "../assets/logo/lan.svg";
 import email from "../assets/logo/email.svg";
 import call from "../assets/logo/call.svg";
 import insta from "../assets/logo/insta.svg";
 import compass from "../assets/logo/compass.svg";
-import arrowDown from "../assets/logo/arrowDown.svg";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
 function Layout({ children }) {
   const navigate = useNavigate();
   const [query, setQuery] = useState();
-  const [drop, setDrop] = useState(true);
 
   const handleSearch = (e) => {
     e.preventDefault();
@@ -22,9 +19,13 @@ function Layout({ children }) {
     navigate(`/search/${encodeURIComponent(query)}`);
   };
 
+  const handleGoBack = () => {
+    navigate(-1); // Go back to the previous page
+  };
+
   return (
     <>
-      <div className="absolute w-full bg-transparant z-40 top-0">
+      <div className="bg-secondary z-40">
         <div className="container mx-auto w-full h-full flex justify-between gap-2 sm:gap-4 py-4 px-4 items-center">
           <div className="flex items-center gap-2 sm:gap-4 w-full sm:w-1/2 relative">
             <img
@@ -52,7 +53,12 @@ function Layout({ children }) {
                 <BiSearch className="h-full aspect-square fill-highlight" />
               </button>
             </form>
-            <img src={compass} alt="" className="aspect-square h-8" />
+            <img
+              src={compass}
+              alt=""
+              className="aspect-square h-8 cursor-pointer hover:scale-105 duration-500"
+              onClick={() => navigate(`/explore`)}
+            />
           </div>
           <div className="flex items-center gap-4">
             <Link
@@ -70,12 +76,11 @@ function Layout({ children }) {
           <div className="w-full sm:w-1/2 space-y-4">
             <img src={logo} alt="" className="w-20" />
             <div className="text-highlight">
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Alias
-              amet animi at aliquam doloribus placeat. Nulla temporibus autem
-              laudantium a facilis! Saepe distinctio expedita vitae ducimus
-              consectetur, quidem reprehenderit sed suscipit, nesciunt sunt
-              optio ipsam dignissimos! Quis iusto quae saepe nemo rerum dolore
-              distinctio, nostrum dolores aliquid sit, debitis suscipit?
+              Welcome to Moshel, your ultimate movie shelter and search website.
+              We are passionate about movies and dedicated to providing you with
+              a comprehensive platform to explore, discover, and enjoy the world
+              of cinema. With a vast collection of movies, intuitive search
+              functionality, and personalized recommendations.
             </div>
           </div>
           <div className="w-full sm:w-1/2 flex flex-col items-start sm:items-end gap-2">
