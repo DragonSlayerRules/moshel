@@ -47,7 +47,7 @@ function Layout({ children }) {
               />
 
               <button
-                className="border-r border-t border-b border-l-0 rounded-md rounded-l-none xxs:rounded-r-md border-highlight px-2 sm:px-4 xxs:pr-2 bg-transparent  h-full items-center justify-center"
+                className="border-r border-t border-b border-l-0 rounded-2xl rounded-l-none xxs:rounded-r-md border-highlight px-2 sm:px-4 xxs:pr-2 bg-transparent  h-full items-center justify-center"
                 type="submit"
               >
                 <BiSearch className="h-full aspect-square fill-highlight" />
@@ -57,7 +57,7 @@ function Layout({ children }) {
               src={compass}
               alt=""
               className="aspect-square h-8 cursor-pointer hover:scale-105 duration-500"
-              onClick={() => navigate(`/explore`)}
+              onClick={() => navigate(`/explore/1`)}
             />
           </div>
           <div className="flex items-center gap-4">

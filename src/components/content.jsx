@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from "react";
-
-import movieCard from "./movieCard";
 import { get } from "../service/service";
 import MovieCard from "./movieCard";
 function Content(param) {
@@ -27,11 +25,8 @@ function Content(param) {
           : "Up Coming"}
       </div>
       <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-2 sm:gap-4">
-      <MovieCard data={movieData} /> 
-        {/* {movieCard(movieData)} */}
+        <MovieCard data={movieData} />
       </div>
-
-      {/* </div> */}
     </div>
   );
 }

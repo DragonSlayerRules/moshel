@@ -43,20 +43,22 @@ function Details() {
       .catch((err) => console.error(err));
   }, []);
 
+  console.log(data);
+
   return (
     <>
       <div className="container mx-auto px-4 grid grid-cols-12 gap-2 my:gap-4 my-2 sm:mt-4 sm:mb-40">
         <div className="col-span-full xl:col-span-8">
-          {/* <Link
+          <Link
             to="#"
-            className="p-4 bg-black/50 absolute"
+            className="p-4 bg-black/50 absolute rounded-tl-2xl rounded-br-2xl"
             onClick={handleGoBack}
           >
             <div className="hidden xl:block text-white font-2xl font-bold">
               CLOSE
             </div>
             <img src={close} alt="" className="xl:hidden" />
-          </Link> */}
+          </Link>
           <iframe
             src={`https://www.youtube.com/embed/${link}`}
             className="w-full aspect-video rounded-2xl"
@@ -70,24 +72,36 @@ function Details() {
               className="aspect-auto h-fit col-span-1"
             />
             <div className="col-span-2 h-fit text-highlight">
-              <div className="font-bold text-2xl">{data?.original_title}</div>
+              <div className="font-bold text-2xl">{data?.title}</div>
               <div className="text-lg font-light">
-               <span className="font-bold">Genre:</span> {data?.genres.map((unit) => unit.name).join(", ")}
+                <span className="font-bold">Genre:</span>{" "}
+                {data?.genres.map((unit) => unit.name).join(", ")}
               </div>
               <div className="text-lg font-light">
-               <span className="font-bold">Date:</span> {data?.release_date}
+                <span className="font-bold">Date:</span> {data?.release_date}
               </div>
               <div className="text-lg font-light">
-               <span className="font-bold">Duration:</span> {data?.runtime} Minutes
+                <span className="font-bold">Duration:</span> {data?.runtime}{" "}
+                Minutes
+              </div>
+              <div className="text-lg font-light">
+                <span className="font-bold">Production Company:</span>{" "}
+                {data.production_companies.map((unit) => unit.name).join(", ")}
               </div>
 
-           
-              <div className="hidden sm:block"> <span className="font-bold">Overview: </span>{data?.overview}</div>
+              <div className="hidden sm:block">
+                {" "}
+                <span className="font-bold">Overview: </span>
+                {data?.overview}
+              </div>
             </div>
             <div className="col-span-full text-highlight">
-            <div className="sm:hidden"> <span className="font-bold">Overview:</span> {data?.overview}</div>
+              <div className="sm:hidden">
+                {" "}
+                <span className="font-bold">Overview:</span> {data?.overview}
+              </div>
 
-              <div className="border w-full py-2 text-center rounded-md">
+              <div className="border w-full py-2 text-center rounded-2xl">
                 Save to favorite
               </div>
             </div>
@@ -98,6 +112,5 @@ function Details() {
     </>
   );
 }
-
 
 export default Details;
