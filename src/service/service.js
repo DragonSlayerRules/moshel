@@ -28,10 +28,13 @@ const getMovie = async (param) => {
   }
 };
 
-const getGenres = async () => {
+const getGenres = async (param) => {
+  console.log('genreParam', param)
   try {
     const response = await fetch(
-      "https://api.themoviedb.org/3/genre/movie/list?language=en",
+      `https://api.themoviedb.org/3/genre/${
+        param === "movie" ? "movie" : "tv"
+      }/list?language=en`,
       options
     );
     const response_1 = await response.json();

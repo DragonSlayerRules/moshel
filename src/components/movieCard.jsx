@@ -4,18 +4,19 @@ import { Link } from "react-router-dom";
 import { execute } from "../service/funtion";
 import { get } from "../service/service";
 
-function MovieCard({ data }) {
+function MovieCard(p) {
+  const { data , type } = p
   const [genres, setGenres] = useState();
   useEffect(() => {
     get
-      .getGenres()
+      .getGenres(type)
       .then((results) => {
         setGenres(results);
       })
       .catch((error) => {
         console.error(error);
       });
-  }, []);
+  }, [type]);
 
   return (
     <>
@@ -48,7 +49,7 @@ function MovieCard({ data }) {
               </div>
               <div className="aspect-[3/2] w-full h-auto p-2 sm:p-4 font-light text-base bg-secondary text-highlight flex flex-col justify-between">
                 <div>
-                  <div className="font-bold text-lg truncate">{unit.title}</div>
+                  <div className="font-bold text-lg truncate">{unit?.title ? unit?.title : unit?.name}</div>
                   <div className="overflow-hidden">
                     {execute.handleFilter(unit?.genre_ids, genres).join(", ")}
                   </div>
@@ -59,7 +60,7 @@ function MovieCard({ data }) {
           ))
         : [1, 2, 3, 4, 5, 6].map((unit) => (
             <div
-              className="w-full aspect-[3/6] animate-pulse bg-gray-400"
+              className="w-full aspect-[3/6] animate-pulse bg-gray-400 rounded-2xl"
               key={unit}
             ></div>
           ))}

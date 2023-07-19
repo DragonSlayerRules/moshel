@@ -43,7 +43,6 @@ function Details() {
       .catch((err) => console.error(err));
   }, []);
 
-  console.log(data);
 
   return (
     <>
@@ -66,16 +65,23 @@ function Details() {
         </div>
         {data && (
           <div className="col-span-full xl:col-span-4 grid grid-cols-3 gap-2 sm:gap-4 w-full h-fit overflow-clip rounded-2xl p-4 bg-secondary">
-            <img
-              src={`https://image.tmdb.org/t/p/w500/${data?.poster_path}`}
-              alt=""
-              className="aspect-auto h-fit col-span-1"
-            />
+            {data?.poster_path ? (
+              <img
+                src={`https://image.tmdb.org/t/p/w500/${data?.poster_path}`}
+                alt=""
+                className="aspect-[3/4] object-cover h-fit col-span-1"
+              />
+            ) : (
+              <div className="w-full aspect-[3/4] bg-gray-400 font-bold text-2xl flex items-center justify-center">
+                Image Not Found
+              </div>
+            )}
+
             <div className="col-span-2 h-fit text-highlight">
               <div className="font-bold text-2xl">{data?.title}</div>
               <div className="text-lg font-light">
                 <span className="font-bold">Genre:</span>{" "}
-                {data?.genres.map((unit) => unit.name).join(", ")}
+                {data?.genres.map((unit) => unit?.name).join(", ")}
               </div>
               <div className="text-lg font-light">
                 <span className="font-bold">Date:</span> {data?.release_date}
@@ -86,7 +92,9 @@ function Details() {
               </div>
               <div className="text-lg font-light">
                 <span className="font-bold">Production Company:</span>{" "}
-                {data.production_companies.map((unit) => unit.name).join(", ")}
+                {data?.production_companies
+                  .map((unit) => unit?.name)
+                  .join(", ")}
               </div>
 
               <div className="hidden sm:block">
