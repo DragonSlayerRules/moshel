@@ -23,7 +23,7 @@ function MovieCard(p) {
       {data
         ? data.map((unit, index) => (
             <Link
-              to={`/details/${unit.id}`}
+              to={`/details/${type}/${unit.id}`}
               className="cardWidth rounded-2xl overflow-hidden cursor-pointer aspect-[3/6]"
               key={index}
             >
@@ -36,11 +36,13 @@ function MovieCard(p) {
                   />
                 </div>
                 {unit.poster_path ? (
-                  <img
+                <div className="aspect-[3/4] w-full bg-gray-400">
+                    <img
                     src={`https://image.tmdb.org/t/p/w500/${unit.poster_path}`}
                     alt=""
                     className="aspect-[3/4] object-cover"
                   />
+                </div>
                 ) : (
                   <div className="w-full aspect-[3/4] bg-gray-400 font-bold text-2xl flex items-center justify-center">
                     Image Not Found

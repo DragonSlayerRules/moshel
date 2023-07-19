@@ -18,8 +18,8 @@ function App() {
     <Layout>
         <Routes>
           <Route index element={<Home />} />
-          <Route path="/details/:userId" element={<Details/>}/>
-          <Route path="/search/:query" element={<Search/>}/>
+          <Route path="/details/:type/:userId" element={<Details/>}/>
+          <Route path="/search/:query/:page" element={<Search/>}/>
           <Route path="/explore/:page" element={<Explore/>}/>
           <Route path="/profile/:userId" element={<Profile/>}/>
           <Route path="/auth" element={<Auth/>}/>

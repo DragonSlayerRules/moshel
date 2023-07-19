@@ -16,7 +16,7 @@ function Layout({ children }) {
     e.preventDefault();
 
     // Navigate to the search path with the query parameter
-    navigate(`/search/${encodeURIComponent(query)}`);
+    navigate(`/search/${encodeURIComponent(query)}/1`);
   };
 
   const handleGoBack = () => {

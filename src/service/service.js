@@ -29,7 +29,6 @@ const getMovie = async (param) => {
 };
 
 const getGenres = async (param) => {
-  console.log('genreParam', param)
   try {
     const response = await fetch(
       `https://api.themoviedb.org/3/genre/${

@@ -1,11 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-function profileCard(data) {
+function ProfileCard({data}) {
   return (
-    <div className="space-y-4 col-span-full">
-      {data?.map((unit) => (
-        <Link to={`/profile/${unit.id}`} className="flex h-32 w-full">
+    <div className="space-y-2 col-span-full">
+      {data?.map((unit, index) => (
+        <Link to={`/profile/${unit.id}`} key={index} className="flex h-32 w-full rounded-2xl overflow-clip">
           {unit.profile_path ? (
             <img
               src={`https://image.tmdb.org/t/p/w500/${unit.profile_path}`}
@@ -13,7 +13,7 @@ function profileCard(data) {
               className="aspect-[3/4] object-center"
             />
           ) : (
-            <div className="aspect-[3/4] bg-gray-400 font-bold text-2xl flex items-center justify-center">
+            <div className="aspect-[3/4] bg-gray-400 font-bold text-xl flex items-center text-center">
               Image Not Found
             </div>
           )}
@@ -32,4 +32,4 @@ function profileCard(data) {
   );
 }
 
-export default profileCard;
+export default ProfileCard;

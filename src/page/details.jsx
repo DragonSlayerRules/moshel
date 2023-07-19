@@ -23,7 +23,7 @@ function Details() {
 
   useEffect(() => {
     fetch(
-      `https://api.themoviedb.org/3/movie/${params.userId}?language=en-US`,
+      `https://api.themoviedb.org/3/${params.type}/${params.userId}?language=en-US`,
       options
     )
       .then((response) => response.json())
@@ -31,7 +31,7 @@ function Details() {
       .catch((err) => console.error(err));
 
     fetch(
-      `https://api.themoviedb.org/3/movie/${params.userId}/videos?language=en-US`,
+      `https://api.themoviedb.org/3/${params.type}/${params.userId}/videos?language=en-US`,
       options
     )
       .then((response) => response.json())
@@ -43,6 +43,7 @@ function Details() {
       .catch((err) => console.error(err));
   }, []);
 
+  console.log(data)
 
   return (
     <>
@@ -109,7 +110,7 @@ function Details() {
                 <span className="font-bold">Overview:</span> {data?.overview}
               </div>
 
-              <div className="border w-full py-2 text-center rounded-2xl">
+              <div className="border w-full py-2 text-center rounded-md">
                 Save to favorite
               </div>
             </div>
