@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { get } from "../service/service";
+import React, { useCallback, useEffect, useState } from "react";
+import { get } from "../services/service";
 import MovieCard from "../components/movieCard";
 import Pagination from "../components/pagination";
 import { useParams } from "react-router-dom";
@@ -27,34 +27,19 @@ function Explore() {
     "vote_count.desc",
   ];
 
-  const options = {
-    method: "GET",
-    headers: {
-      accept: "application/json",
-      Authorization:
-        "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI5NWNjZjI2NDlhZmUzMmM2NWZhNWMwMGE2NDFlYmYwNyIsInN1YiI6IjY0YWJiOGFhOGEwZTliMDEwMGMzODhkOCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.WzLmOCYKYl4YPdAmlcDMiT1ad-HfU7lAY1iTP4gPpFQ",
-    },
-  };
-
-  const handleSearch = () => {
-    fetch(
-      `https://api.themoviedb.org/3/discover/${
-        filter?.type ? filter.type : "movie"
-      }?include_adult=false&include_video=false&language=en-US&page=${
-        params.page
-      }&sort_by=${filter?.sort ? filter.sort : "popularity.desc"}${
-        filter?.genreId ? "&with_genres=" + filter.genreId : ""
-      }`,
-      options
-    )
-      .then((response) => response.json())
-      .then((response) => setdata(response))
-      .catch((err) => console.error(err));
-  };
-
+  const handleDiscover = useCallback(() => {
+    get
+      .getDiscover(filter, params)
+      .then((results) => {
+        setdata(results);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, [filter, params]);
+  
   useEffect(() => {
-    handleSearch();
-   
+    handleDiscover();
     get
       .getGenres(filter?.type)
       .then((results) => {
@@ -79,7 +64,7 @@ function Explore() {
                     ...prev,
                     type: "movie",
                   }));
-                  handleSearch();
+                  handleDiscover();
                 }}
               >
                 Film
@@ -93,7 +78,7 @@ function Explore() {
                     ...prev,
                     type: "tv"
                   }));
-                  handleSearch();
+                  handleDiscover();
                 }}
               >
                 TV
@@ -143,7 +128,7 @@ function Explore() {
           <div className="p-4">
             <button
               className="border border-highlight w-full text-center py-2 text-base font-medium text-highlight rounded-md"
-              onClick={handleSearch}
+              onClick={handleDiscover}
             >
               Search
             </button>
@@ -153,7 +138,7 @@ function Explore() {
 
       <div className="col-span-full lg:col-span-3 xl:col-span-5">
         <div className="grid gap-2 sm:gap-2 grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 xl:grid-cols-5">
-          <MovieCard data={data?.results} type={filter?.type} />
+          <MovieCard data={data?.results} type={filter?.type} location='back' />
         </div>
         <Pagination
           page={params.page}

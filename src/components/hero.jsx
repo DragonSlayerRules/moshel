@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import arrowLeft from "../assets/logo/arrowLeft.svg";
 import arrowRight from "../assets/logo/arrowRight.svg";
 import dropDown from "../assets/logo/arrowDown.svg";
-import { get } from "../service/service";
-import { execute } from "../service/funtion";
+import { get } from "../services/service";
+import { execute } from "../services/funtion";
 import { useNavigate } from "react-router-dom";
 
 function Hero() {
@@ -54,7 +54,7 @@ function Hero() {
                   <img
                     src={`https://image.tmdb.org/t/p/w500/${slide?.poster_path}`}
                     alt=""
-                    className="col-span-2 sm:col-span-1 aspect-[3/4] object-cover"
+                    className="col-span-2 sm:col-span-1 aspect-[3/4] object-cover rounded-md"
                   />
                   <div className="col-span-4 sm:col-span-5 overflow-hidden h-full pl-2 w-full sm:w-full flex flex-col items-start sm:justify-end space-y-2 relative">
                     <div>
@@ -103,7 +103,7 @@ function Hero() {
             )}
             <div className="relative w-full">
               <div className="absolute w-full z-40 bottom-0 sm:top-0 h-fit">
-                <div className="flex w-full justify-between">
+                <div className="flex w-full justify-between items-end">
                   <button
                     className="p-4 rounded-tr-md sm:rounded-br-2xl sm:rounded-tr-none sm:p-4 bg-stroke/50 cursor-pointer"
                     onClick={(e) => {
@@ -117,6 +117,9 @@ function Hero() {
                       className="w-8 sm:w-10 aspect-square"
                     />
                   </button>
+                  <div className="font-bold text-xs text-highlight bg-black/50 px-4 py-1 rounded-t-md sm:hidden">
+                    Now Playing
+                  </div>
                   <button
                     className="p-4 rounded-tl-md sm:rounded-bl-2xl sm:rounded-tl-none sm:p-4 bg-stroke/50 cursor-pointer"
                     onClick={(e) => {
@@ -148,7 +151,7 @@ function Hero() {
         <div className="col-span-4 aspect-square pl-4 overflow-clip rounded-md sm:rounded-2xl w-full hidden lg:block space-y-2">
           <div className="h-full overflow-y-scroll space-y-2 rounded-md sm:rounded-2xl">
             <div className="font-bold text-2xl p-4 z-10 bg-secondary text-highlight rounded-t-2xl rounded-b-md sticky top-0">
-              <div>Up Coming Movies</div>
+              <div>Now Playing</div>
             </div>
             {movieData?.map((unit, index) => {
               return (

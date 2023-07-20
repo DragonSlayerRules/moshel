@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import instagram from "../assets/logo/instagram.svg";
 import twitter from "../assets/logo/twitter.svg";
 import tiktok from "../assets/logo/tiktok.svg";
 import arrowLeft from "../assets/logo/arrowLeft.svg";
 import MiniCard from "../components/miniCard";
+import { get } from "../services/service";
 
-function Profile() {
+function PersonDetails() {
   const params = useParams();
   const [data, setData] = useState({});
   const navigate = useNavigate();
@@ -17,57 +18,54 @@ function Profile() {
     return Math.abs(ageDate.getUTCFullYear() - 1970);
   };
 
+  const handleScrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth", // Use 'auto' for instant scroll without animation
+    });
+  };
+
   const handleGoBack = () => {
     navigate(-1); // Go back to the previous page
   };
 
   useEffect(() => {
-    const options = {
-      method: "GET",
-      headers: {
-        accept: "application/json",
-        Authorization:
-          "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI5NWNjZjI2NDlhZmUzMmM2NWZhNWMwMGE2NDFlYmYwNyIsInN1YiI6IjY0YWJiOGFhOGEwZTliMDEwMGMzODhkOCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.WzLmOCYKYl4YPdAmlcDMiT1ad-HfU7lAY1iTP4gPpFQ",
-      },
-    };
+    get
+      .getPersonDetails(params, "credits")
+      .then((results) => {
+        setData((prev) => ({
+          ...prev,
+          credits: results,
+        }));
+      })
+      .catch((error) => {
+        console.error(error);
+      });
 
-    fetch(
-      `https://api.themoviedb.org/3/person/${params.userId}/movie_credits`,
-      options
-    )
-      .then((response) => response.json())
-      .then((response) =>
+    get
+      .getPersonDetails(params, "link")
+      .then((results) => {
         setData((prev) => ({
           ...prev,
-          credits: response,
-        }))
-      )
-      .catch((err) => console.error(err));
-    fetch(
-      `https://api.themoviedb.org/3/person/${params.userId}?language=en-US`,
-      options
-    )
-      .then((response) => response.json())
-      .then((response) =>
+          link: results,
+        }));
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+
+    get
+      .getPersonDetails(params, "person")
+      .then((results) => {
         setData((prev) => ({
           ...prev,
-          person: response,
-        }))
-      )
-      .catch((err) => console.error(err));
-    fetch(
-      `https://api.themoviedb.org/3/person/${params.userId}/external_ids`,
-      options
-    )
-      .then((response) => response.json())
-      .then((response) =>
-        setData((prev) => ({
-          ...prev,
-          link: response,
-        }))
-      )
-      .catch((err) => console.error(err));
-  }, [params.userId]);
+          person: results,
+        }));
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, [params]);
 
   return (
     <div className="container mx-auto my-2 sm:my-4 gap-4 px-4">
@@ -89,7 +87,7 @@ function Profile() {
               className="w-1/2 sm:w-full mx-auto aspect-square sm:aspect-[3/4] object-cover rounded-md"
             />
           ) : (
-            <div className="aspect-[3/4] bg-gray-400 font-bold text-2xl flex items-center text-center">
+            <div className="aspect-[3/4] bg-gray-400 font-bold text-2xl flex items-center justify-center rounded-md">
               Image Not Found
             </div>
           )}
@@ -175,6 +173,7 @@ function Profile() {
               <MiniCard
                 data={data?.credits?.cast?.slice(0, 20)}
                 type="creditMovie"
+                onClick={handleScrollToTop()}
               />
             </div>
           </div>
@@ -184,4 +183,4 @@ function Profile() {
   );
 }
 
-export default Profile;
+export default PersonDetails;

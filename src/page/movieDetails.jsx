@@ -2,20 +2,19 @@ import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import arrowLeft from "../assets/logo/arrowLeft.svg";
 import MiniCard from "../components/miniCard";
+import { get } from "../services/service";
 
-function Details() {
+function MovieDetails() {
   const params = useParams();
   const [data, setData] = useState();
   const [link, setLink] = useState();
   const navigate = useNavigate();
 
-  const options = {
-    method: "GET",
-    headers: {
-      accept: "application/json",
-      Authorization:
-        "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI5NWNjZjI2NDlhZmUzMmM2NWZhNWMwMGE2NDFlYmYwNyIsInN1YiI6IjY0YWJiOGFhOGEwZTliMDEwMGMzODhkOCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.WzLmOCYKYl4YPdAmlcDMiT1ad-HfU7lAY1iTP4gPpFQ",
-    },
+  const handleScrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth", // Use 'auto' for instant scroll without animation
+    });
   };
 
   const handleGoBack = () => {
@@ -23,57 +22,53 @@ function Details() {
   };
 
   useEffect(() => {
-    fetch(
-      `https://api.themoviedb.org/3/${params.type}/${params.userId}?language=en-US`,
-      options
-    )
-      .then((response) => response.json())
-      .then((response) =>
+    get
+      .getMovieDetails(params, "details")
+      .then((results) => {
         setData((prev) => ({
           ...prev,
-          details: response,
-        }))
-      )
-      .catch((err) => console.error(err));
+          details: results,
+        }));
+      })
+      .catch((error) => {
+        console.error(error);
+      });
 
-    fetch(
-      `https://api.themoviedb.org/3/${params.type}/${params.userId}/credits?language=en-US`,
-      options
-    )
-      .then((response) => response.json())
-      .then((response) =>
+    get
+      .getMovieDetails(params, "casts")
+      .then((results) => {
         setData((prev) => ({
           ...prev,
-          casts: response,
-        }))
-      )
-      .catch((err) => console.error(err));
+          casts: results,
+        }));
+      })
+      .catch((error) => {
+        console.error(error);
+      });
 
-    fetch(
-      `https://api.themoviedb.org/3/movie/${params.userId}/recommendations`,
-      options
-    )
-      .then((response) => response.json())
-      .then((response) =>
+    get
+      .getMovieDetails(params, "recommendations")
+      .then((results) => {
         setData((prev) => ({
           ...prev,
-          recommendations: response,
-        }))
-      )
-      .catch((err) => console.error(err));
+          recommendations: results,
+        }));
+      })
+      .catch((error) => {
+        console.error(error);
+      });
 
-    fetch(
-      `https://api.themoviedb.org/3/${params.type}/${params.userId}/videos?language=en-US`,
-      options
-    )
-      .then((response) => response.json())
-      .then((response) =>
+    get
+      .getMovieDetails(params, "recommendations")
+      .then((results) => {
         setLink(
-          response.results.filter((unit) => unit.type === "Trailer")[0].key
-        )
-      )
-      .catch((err) => console.error(err));
-  }, []);
+          results.results.filter((unit) => unit.type === "Trailer")[0].key
+        );
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, [params]);
 
   return (
     <>
@@ -88,19 +83,32 @@ function Details() {
             </div>
             <img src={arrowLeft} alt="" className="xl:hidden" />
           </div>
-          <iframe
-            src={`https://www.youtube.com/embed/${link}`}
-            className="w-full aspect-video rounded-2xl"
-          ></iframe>
+          {link ? (
+            <iframe
+              src={`https://www.youtube.com/embed/${link}`}
+              className="w-full aspect-video rounded-2xl"
+              title={data?.details?.title}
+            ></iframe>
+          ) : (
+            <div className="w-full aspect-video rounded-2xl bg-gray-500 flex items-center justify-center text-2xl">
+              Video not Found
+            </div>
+          )}
           <div className="hidden xl:block mt-2 space-y-2">
-            <MiniCard
-              data={data?.casts?.cast?.slice(0, 20)}
-              type="creditCast"
-            />
-            <MiniCard
-              data={data?.recommendations?.results.slice(0, 20)}
-              type="recommend"
-            />
+            {data?.casts?.cast?.length !== 0 && (
+              <MiniCard
+                data={data?.casts?.cast?.slice(0, 20)}
+                type="creditCast"
+                onClick={handleScrollToTop()}
+              />
+            )}
+            {data?.recommendations?.results?.length !== 0 && (
+              <MiniCard
+                data={data?.recommendations?.results.slice(0, 20)}
+                type="recommend"
+                onClick={handleScrollToTop()}
+              />
+            )}
           </div>
         </div>
         {data && (
@@ -113,7 +121,7 @@ function Details() {
                   className="aspect-[3/4] object-cover h-fit col-span-1 rounded-md"
                 />
               ) : (
-                <div className="w-full aspect-[3/4] bg-gray-400 font-bold text-2xl flex items-center justify-center">
+                <div className="w-full aspect-[3/4] bg-gray-400 font-bold text-2xl flex items-center justify-center rounded-md">
                   Image Not Found
                 </div>
               )}
@@ -146,7 +154,6 @@ function Details() {
               </div>
               <div className="col-span-full text-highlight">
                 <div className="sm:hidden">
-                  {" "}
                   <span className="font-bold">Overview:</span>{" "}
                   {data?.details?.overview}
                 </div>
@@ -160,12 +167,14 @@ function Details() {
                 <MiniCard
                   data={data?.casts?.cast?.slice(0, 20)}
                   type="creditCast"
+                  onClick={handleScrollToTop()}
                 />
               )}
               {data?.recommendations?.results?.length !== 0 && (
                 <MiniCard
                   data={data?.recommendations?.results.slice(0, 20)}
                   type="recommend"
+                  onClick={handleScrollToTop()}
                 />
               )}
             </div>
@@ -176,4 +185,4 @@ function Details() {
   );
 }
 
-export default Details;
+export default MovieDetails;

@@ -1,24 +1,16 @@
 import React from "react";
+import logo from "../assets/frameBlack.png"
 
 function Auth() {
   return (
     <>
-    {/*
-      This example requires updating your template:
-
-      ```
-      <html class="h-full bg-white">
-      <body class="h-full">
-      ```
-    */}
-    <div className="text-4xl">BACK END IS ON PROGRESS</div>
     <div className="flex min-h-full flex-1 flex-col justify-center py-12 container mx-auto px-8 mb-20">
-      <div className="flex justify-center">
-        {/* <img
+      <div className="">
+        <img
           className="mx-auto h-10 w-auto"
-          src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
+          src={logo}
           alt="Your Company"
-        /> */}
+        />
         <h2 className="text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
           Sign in to your account
         </h2>
@@ -82,6 +74,8 @@ function Auth() {
           </a>
         </p>
       </div>
+    <div className="text-4xl text-black/5">Sorry the developer is isolate himself to study backend login register :{')'} But don't worry, it wont take long, so here a local storage methode</div>
+
     </div>
   </>
   );

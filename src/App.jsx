@@ -1,15 +1,16 @@
 import React from "react";
-import Layout from "./components/layout";
-import Home from "./page/home";
-import Details from './page/details'
-import Error from './page/error'
-import Search from "./page/search";
 import {
   Routes,
   Route,
 } from "react-router-dom";
+
+import Layout from "./components/layout";
+import Home from "./page/home";
+import Error from './page/error'
+import Search from "./page/search";
+import MovieDetails from "./page/movieDetails";
+import PersonDetails from "./page/personDetails";
 import Explore from "./page/explore";
-import Profile from "./page/profile";
 import Auth from "./page/auth";
 import Test from "./page/test";
 
@@ -18,15 +19,13 @@ function App() {
     <Layout>
         <Routes>
           <Route index element={<Home />} />
-          <Route path="/details/:type/:userId" element={<Details/>}/>
+          <Route path="/details/:type/:userId" element={<MovieDetails/>}/>
           <Route path="/search/:query/:page" element={<Search/>}/>
           <Route path="/explore/:page" element={<Explore/>}/>
-          <Route path="/profile/:userId" element={<Profile/>}/>
+          <Route path="/profile/:userId" element={<PersonDetails/>}/>
           <Route path="/auth" element={<Auth/>}/>
-          <Route path="/error" element={<Error/>}/>
+          <Route path="*" element={<Error/>}/>
           <Route path="/test" element={<Test/>}/>
-
-          {/* <Route path="/details" component={<Details/>} /> */}
         </Routes>
     </Layout>
   );
