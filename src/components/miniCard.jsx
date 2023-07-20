@@ -1,11 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import notFound from "../assets/notFound.jpeg";
+import { execute } from "../services/funtion";
 
 function MiniCard(p) {
-  const sortPopular = (data) => {
-    return data?.sort((a, b) => b.popularity - a.popularity);
-  };
   const { data, type } = p;
   return (
     <div
@@ -25,7 +23,7 @@ function MiniCard(p) {
 
       <div className="flex overflow-scroll">
         <div className="flex gap-2">
-          {(type === "creditCast" ? data : sortPopular(data))?.map(
+          {(type === "creditCast" ? data : execute.handleSortPopular(data))?.map(
             (unit, index) => (
               <Link
                 to={

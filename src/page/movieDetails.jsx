@@ -3,23 +3,13 @@ import { useNavigate, useParams } from "react-router-dom";
 import arrowLeft from "../assets/logo/arrowLeft.svg";
 import MiniCard from "../components/miniCard";
 import { get } from "../services/service";
+import { execute } from "../services/funtion";
 
 function MovieDetails() {
   const params = useParams();
   const [data, setData] = useState();
   const [link, setLink] = useState();
   const navigate = useNavigate();
-
-  const handleScrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth", // Use 'auto' for instant scroll without animation
-    });
-  };
-
-  const handleGoBack = () => {
-    navigate(-1); // Go back to the previous page
-  };
 
   useEffect(() => {
     get
@@ -59,7 +49,7 @@ function MovieDetails() {
       });
 
     get
-      .getMovieDetails(params, "recommendations")
+      .getMovieDetails(params, "link")
       .then((results) => {
         setLink(
           results.results.filter((unit) => unit.type === "Trailer")[0].key
@@ -76,7 +66,7 @@ function MovieDetails() {
         <div className="col-span-full xl:col-span-8">
           <div
             className="p-4 bg-black/80 absolute rounded-tl-2xl rounded-br-2xl cursor-pointer"
-            onClick={handleGoBack}
+            onClick={() => navigate(-1)}
           >
             <div className="hidden xl:block text-white font-2xl font-bold">
               BACK
@@ -99,14 +89,14 @@ function MovieDetails() {
               <MiniCard
                 data={data?.casts?.cast?.slice(0, 20)}
                 type="creditCast"
-                onClick={handleScrollToTop()}
+                onClick={execute.handleScrollToTop()}
               />
             )}
             {data?.recommendations?.results?.length !== 0 && (
               <MiniCard
                 data={data?.recommendations?.results.slice(0, 20)}
                 type="recommend"
-                onClick={handleScrollToTop()}
+                onClick={execute.handleScrollToTop()}
               />
             )}
           </div>
@@ -167,14 +157,14 @@ function MovieDetails() {
                 <MiniCard
                   data={data?.casts?.cast?.slice(0, 20)}
                   type="creditCast"
-                  onClick={handleScrollToTop()}
+                  onClick={execute.handleScrollToTop()}
                 />
               )}
               {data?.recommendations?.results?.length !== 0 && (
                 <MiniCard
                   data={data?.recommendations?.results.slice(0, 20)}
                   type="recommend"
-                  onClick={handleScrollToTop()}
+                  onClick={execute.handleScrollToTop()}
                 />
               )}
             </div>

@@ -6,28 +6,12 @@ import tiktok from "../assets/logo/tiktok.svg";
 import arrowLeft from "../assets/logo/arrowLeft.svg";
 import MiniCard from "../components/miniCard";
 import { get } from "../services/service";
+import { execute } from "../services/funtion";
 
 function PersonDetails() {
   const params = useParams();
   const [data, setData] = useState({});
   const navigate = useNavigate();
-
-  const calculateAge = (birthDate) => {
-    const ageDiff = Date.now() - new Date(birthDate);
-    const ageDate = new Date(ageDiff);
-    return Math.abs(ageDate.getUTCFullYear() - 1970);
-  };
-
-  const handleScrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth", // Use 'auto' for instant scroll without animation
-    });
-  };
-
-  const handleGoBack = () => {
-    navigate(-1); // Go back to the previous page
-  };
 
   useEffect(() => {
     get
@@ -73,7 +57,7 @@ function PersonDetails() {
         <div className="col-span-full sm:col-span-4 ">
           <div
             className="p-4 bg-black/80 absolute rounded-tl-md rounded-br-md cursor-pointer"
-            onClick={handleGoBack}
+            onClick={() => navigate(-1)}
           >
             <div className="hidden xl:block text-white font-2xl font-bold">
               BACK
@@ -133,12 +117,12 @@ function PersonDetails() {
               <div className="text-highlight text-base">
                 <span className="font-bold">Birthday: </span>
                 {data?.person?.known_for_department} (
-                {calculateAge(data?.person?.birthday)})
+                {execute.handleCalculateAge(data?.person?.birthday)})
               </div>
               <div className="text-highlight">
                 <span className="font-bold">Birthday: </span>
-                {data?.person?.birthday} ({calculateAge(data?.person?.birthday)}
-                )
+                {data?.person?.birthday} (
+                {execute.handleCalculateAge(data?.person?.birthday)})
               </div>
               <div className="text-highlight">
                 <span className="font-bold">Place of Birth: </span>
@@ -148,7 +132,7 @@ function PersonDetails() {
                 <span className="font-bold">Deathday: </span>
                 {data?.person?.deathday ? data?.person?.deathday : "-"}{" "}
                 {data?.person?.deathday
-                  ? calculateAge(data?.person?.deathday)
+                  ? execute.handleCalculateAge(data?.person?.deathday)
                   : ""}
               </div>
               <div className="text-highlight">
@@ -173,7 +157,7 @@ function PersonDetails() {
               <MiniCard
                 data={data?.credits?.cast?.slice(0, 20)}
                 type="creditMovie"
-                onClick={handleScrollToTop()}
+                onClick={execute.handleScrollToTop()}
               />
             </div>
           </div>
