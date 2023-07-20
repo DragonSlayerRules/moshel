@@ -65,7 +65,6 @@ function Explore() {
       });
   }, [filter?.type]);
 
-  console.log(data);
   return (
     <div className="container mx-auto px-4 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-2 sm:gap-4 my-2 sm:my-4">
       <div className="col-span-full lg:col-span-1 h-fit lg:sticky top-4">

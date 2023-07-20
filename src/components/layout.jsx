@@ -19,10 +19,6 @@ function Layout({ children }) {
     navigate(`/search/${encodeURIComponent(query)}/1`);
   };
 
-  const handleGoBack = () => {
-    navigate(-1); // Go back to the previous page
-  };
-
   return (
     <>
       <div className="bg-secondary z-40">
@@ -47,7 +43,7 @@ function Layout({ children }) {
               />
 
               <button
-                className="border-r border-t border-b border-l-0 rounded-2xl rounded-l-none xxs:rounded-r-md border-highlight px-2 sm:px-4 xxs:pr-2 bg-transparent  h-full items-center justify-center"
+                className="border-r border-t border-b border-l-0 rounded-md rounded-l-none xxs:rounded-r-md border-highlight px-2 sm:px-4 xxs:pr-2 bg-transparent  h-full items-center justify-center"
                 type="submit"
               >
                 <BiSearch className="h-full aspect-square fill-highlight" />

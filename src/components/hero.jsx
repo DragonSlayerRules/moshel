@@ -159,7 +159,7 @@ function Hero() {
                   <img
                     src={`https://image.tmdb.org/t/p/w500/${unit.poster_path}`}
                     alt=""
-                    className="w-1/5 object-contain"
+                    className="w-1/5 object-cover rounded-md"
                   />
                   <div>
                     <div className="font-bold text-lg text-highlight">

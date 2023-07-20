@@ -10,7 +10,7 @@ function ProfileCard({data}) {
             <img
               src={`https://image.tmdb.org/t/p/w500/${unit.profile_path}`}
               alt=""
-              className="aspect-[3/4] object-center"
+              className="aspect-[3/4] object-cover"
             />
           ) : (
             <div className="aspect-[3/4] bg-gray-400 font-bold text-xl flex items-center text-center">
