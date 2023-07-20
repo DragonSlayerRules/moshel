@@ -97,10 +97,10 @@ function Details() {
               data={data?.casts?.cast?.slice(0, 20)}
               type="creditCast"
             />
-                <MiniCard
-                data={data?.recommendations?.results.slice(0, 20)}
-                type="recommend"
-              />
+            <MiniCard
+              data={data?.recommendations?.results.slice(0, 20)}
+              type="recommend"
+            />
           </div>
         </div>
         {data && (
@@ -140,7 +140,6 @@ function Details() {
                 </div>
 
                 <div className="hidden sm:block">
-                  {" "}
                   <span className="font-bold">Overview: </span>
                   {data?.details?.overview}
                 </div>
@@ -157,14 +156,18 @@ function Details() {
               </div>
             </div>
             <div className="xl:hidden mt-2 space-y-2">
-              <MiniCard
-                data={data?.casts?.cast?.slice(0, 20)}
-                type="creditCast"
-              />
-              <MiniCard
-                data={data?.recommendations?.results.slice(0, 20)}
-                type="recommend"
-              />
+              {data?.casts?.cast?.length !== 0 && (
+                <MiniCard
+                  data={data?.casts?.cast?.slice(0, 20)}
+                  type="creditCast"
+                />
+              )}
+              {data?.recommendations?.results?.length !== 0 && (
+                <MiniCard
+                  data={data?.recommendations?.results.slice(0, 20)}
+                  type="recommend"
+                />
+              )}
             </div>
           </div>
         )}

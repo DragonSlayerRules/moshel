@@ -8,30 +8,33 @@ function MiniCard(p) {
       };
   const { data, type } = p;
   return (
-    <div className={`${type === 'creditCast' || type === 'recommend' ? 'p-4' :  'p-0'} space-y-2 bg-secondary rounded-2xl overflow-clip`}>
+    <div className={`${type === 'creditCast' || type === 'recommend' ? 'p-4 rounded-2xl'  :  'p-0'} space-y-2 bg-secondary overflow-clip`}>
       <div className="text-xl font-bold   text-highlight">
         {type === "creditCast" ? "Casts" : type === 'creditMovie' ? "Also known as" : 'Recommedation'}
       </div>
 
       <div className="flex overflow-scroll">
         <div className="flex gap-2">
-          {(type === 'creditCast' ? data : sortPopular(data) )?.map((unit) => (
+          {(type === 'creditCast' ? data : sortPopular(data) )?.map((unit, index) => (
             <Link
               to={
                 type === "creditCast"
                   ? `/profile/${unit.id}`
                   : `/details/movie/${unit.id}`
               }
+              key={index}
               className="overflow-clip rounded-md w-40"
             >
               {unit.profile_path || unit.poster_path ? (
-                <img
+               <div className="aspect-[3/4] bg-gray-500">
+                 <img
                   src={`https://image.tmdb.org/t/p/w500/${
                     type === "creditCast" ? unit.profile_path : unit.poster_path
                   }`}
                   alt=""
                   className="aspect-[3/4] object-cover h-fit w-40 col-span-1"
                 />
+               </div>
               ) : (
                 <img
                   src={notFound}
@@ -46,7 +49,7 @@ function MiniCard(p) {
                 </div>
                 <div className="font-light truncate">
                   {" "}
-                  {type === "creditCast" ? unit.character : ""}
+                  {type === "creditCast" ? unit.character ? unit.character : "-": ""}
                 </div>
               </div>
             </Link>

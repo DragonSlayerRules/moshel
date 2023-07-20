@@ -11,6 +11,7 @@ function Auth() {
       <body class="h-full">
       ```
     */}
+    <div className="text-4xl">BACK END IS ON PROGRESS</div>
     <div className="flex min-h-full flex-1 flex-col justify-center py-12 container mx-auto px-8 mb-20">
       <div className="flex justify-center">
         {/* <img

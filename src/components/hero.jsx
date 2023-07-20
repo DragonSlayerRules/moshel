@@ -12,11 +12,11 @@ function Hero() {
   const [slide, setSlide] = useState();
   const [genres, setGenres] = useState();
   const [drop, setDrop] = useState(false);
-  const navigate =useNavigate()
+  const navigate = useNavigate();
 
   useEffect(() => {
     get
-      .getGenres('movie')
+      .getGenres("movie")
       .then((results) => {
         setGenres(results);
       })
@@ -43,13 +43,14 @@ function Hero() {
   return (
     <>
       <div className="w-full container mx-auto px-4 grid grid-cols-12 my-2 sm:my-4">
-        <div className="col-span-full lg:col-span-8 w-full aspect-[2/1] object-fill relative rounded-2xl h-full sm:overflow-clip"   onClick={() => navigate(`/details/movie/${slide?.id}`)}>
+        <div
+          className="col-span-full lg:col-span-8 w-full aspect-[2/1] object-fill relative rounded-md sm:rounded-2xl h-full sm:overflow-clip"
+          onClick={() => navigate(`/details/movie/${slide?.id}`)}
+        >
           <div className="flex items-end flex-col-reverse w-full">
             {slide && (
-              <div
-                className="bg-secondary sm:bg-transparent bg-gradient-to-t sm:from-black h-full full sm:absolute z-40 justify-start flex flex-col items-start sm:justify-end w-full gap-2 px-2 py-4 sm:p-4 bottom-0 rounded-b-2xl"
-              >
-                <div className="grid grid-cols-6 rounded-2xl">
+              <div className="bg-secondary sm:bg-transparent bg-gradient-to-t sm:from-black h-full full sm:absolute z-40 justify-start flex flex-col items-start sm:justify-end w-full gap-2 px-2 py-4 sm:p-4 bottom-0 rounded-b-md sm:rounded-b-2xl">
+                <div className="grid grid-cols-6 rounded-md sm:rounded-2xl">
                   <img
                     src={`https://image.tmdb.org/t/p/w500/${slide?.poster_path}`}
                     alt=""
@@ -104,7 +105,7 @@ function Hero() {
               <div className="absolute w-full z-40 bottom-0 sm:top-0 h-fit">
                 <div className="flex w-full justify-between">
                   <button
-                    className="p-4 rounded-tr-2xl sm:rounded-br-2xl sm:rounded-tr-none sm:p-4 bg-stroke/50 cursor-pointer"
+                    className="p-4 rounded-tr-md sm:rounded-br-2xl sm:rounded-tr-none sm:p-4 bg-stroke/50 cursor-pointer"
                     onClick={(e) => {
                       e.stopPropagation();
                       num >= 1 && setNum(num - 1);
@@ -117,7 +118,7 @@ function Hero() {
                     />
                   </button>
                   <button
-                    className="p-4 rounded-tl-2xl sm:rounded-bl-2xl sm:rounded-tl-none sm:p-4 bg-stroke/50 cursor-pointer"
+                    className="p-4 rounded-tl-md sm:rounded-bl-2xl sm:rounded-tl-none sm:p-4 bg-stroke/50 cursor-pointer"
                     onClick={(e) => {
                       e.stopPropagation();
                       num !== 9 && setNum(num + 1);
@@ -136,7 +137,7 @@ function Hero() {
                 <img
                   src={`https://image.tmdb.org/t/p/w500/${slide?.backdrop_path}`}
                   alt=""
-                  className="object-cover w-full aspect-[2/1] rounded-t-2xl"
+                  className="object-cover w-full aspect-[2/1] rounded-t-md sm:rounded-t-2xl"
                 />
               ) : (
                 <div className="w-full h-full animate-pulse aspect-[2/1] bg-gray-400"></div>
@@ -144,8 +145,8 @@ function Hero() {
             </div>
           </div>
         </div>
-        <div className="col-span-4 aspect-square pl-4 overflow-clip rounded-2xl w-full hidden lg:block space-y-2">
-          <div className="h-full overflow-y-scroll space-y-2 rounded-2xl">
+        <div className="col-span-4 aspect-square pl-4 overflow-clip rounded-md sm:rounded-2xl w-full hidden lg:block space-y-2">
+          <div className="h-full overflow-y-scroll space-y-2 rounded-md sm:rounded-2xl">
             <div className="font-bold text-2xl p-4 z-10 bg-secondary text-highlight rounded-t-2xl rounded-b-md sticky top-0">
               <div>Up Coming Movies</div>
             </div>

@@ -11,7 +11,6 @@ function Profile() {
   const [data, setData] = useState({});
   const navigate = useNavigate();
 
-
   const calculateAge = (birthDate) => {
     const ageDiff = Date.now() - new Date(birthDate);
     const ageDate = new Date(ageDiff);
@@ -100,27 +99,33 @@ function Profile() {
                 {data?.person?.name}
               </div>
               <div className="flex gap-4 mx-auto sm:mx-0 w-fit">
-                <a
-                  href={`https://www.instagram.com/${data?.link?.instagram_id}/?hl=id`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <img src={instagram} alt="" className="w-8 aspect-square" />
-                </a>
-                <a
-                  href={`https://twitter.com/${data?.link?.twitter_id}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <img src={twitter} alt="" className="w-8 aspect-square" />
-                </a>
-                <a
-                  href={`https://www.tiktok.com/@${data?.link?.tiktok_id}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <img src={tiktok} alt="" className="w-8 aspect-square" />
-                </a>
+                {data?.link?.instagram_id && (
+                  <a
+                    href={`https://www.instagram.com/${data?.link?.instagram_id}/?hl=id`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <img src={instagram} alt="" className="w-8 aspect-square" />
+                  </a>
+                )}
+                {data?.link?.twitter_id && (
+                  <a
+                    href={`https://twitter.com/${data?.link?.twitter_id}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <img src={twitter} alt="" className="w-8 aspect-square" />
+                  </a>
+                )}
+                {data?.link?.tiktok_id && (
+                  <a
+                    href={`https://www.tiktok.com/@${data?.link?.tiktok_id}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <img src={tiktok} alt="" className="w-8 aspect-square" />
+                  </a>
+                )}
               </div>
             </div>
             <div className="text-center sm:text-start">

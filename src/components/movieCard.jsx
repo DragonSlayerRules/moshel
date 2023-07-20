@@ -24,15 +24,16 @@ function MovieCard(p) {
         ? data.map((unit, index) => (
             <Link
               to={`/details/${type}/${unit.id}`}
-              className="cardWidth rounded-2xl overflow-hidden cursor-pointer aspect-[3/6]"
+              className="w-40 sm:w-52 rounded-md sm:rounded-2xl overflow-hidden cursor-pointer aspect-[3/6] relative"
               key={index}
             >
-              <div>
+           <div className="aspect-3/4 bg-gray-500">
+           <div>
                 <div>
                   <img
                     src={save}
                     alt=""
-                    className="absolute w-8 sm:w-12 rounded-tl-2xl"
+                    className="absolute w-8 sm:w-12 rounded-tl-md sm:rounded-tl-2xl"
                   />
                 </div>
                 {unit.poster_path ? (
@@ -49,15 +50,16 @@ function MovieCard(p) {
                   </div>
                 )}
               </div>
-              <div className="aspect-[3/2] w-full h-auto p-2 sm:p-4 font-light text-base bg-secondary text-highlight flex flex-col justify-between">
+              <div className="aspect-[3/2] w-full h-auto py-3 px-2 sm:p-4 font-light text-base bg-secondary text-highlight flex flex-col justify-between">
                 <div>
                   <div className="font-bold text-lg truncate">{unit?.title ? unit?.title : unit?.name}</div>
-                  <div className="overflow-hidden">
+                  <div className="overflow-hidden text-xs sm:text-base">
                     {execute.handleFilter(unit?.genre_ids, genres).join(", ")}
                   </div>
                 </div>
                 <div className="underline-offset-1 underline">view details</div>
               </div>
+           </div>
             </Link>
           ))
         : [1, 2, 3, 4, 5, 6].map((unit) => (

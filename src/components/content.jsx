@@ -24,8 +24,11 @@ function Content(param) {
           ? "Top Rated"
           : "Up Coming"}
       </div>
-      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-2 sm:gap-4">
-        <MovieCard data={movieData} type='movie' />
+      {/* <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-2 sm:gap-4"> */}
+      <div className="flex overflow-scroll">
+        <div className="flex gap-4">
+          <MovieCard data={movieData} type="movie" />
+        </div>
       </div>
     </div>
   );
