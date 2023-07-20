@@ -20,10 +20,15 @@ const handleCalculateAge = (birthDate) => {
   return Math.abs(ageDate.getUTCFullYear() - 1970);
 };
 
+const handleSortPopular = (data) => {
+  return data?.sort((a, b) => b.popularity - a.popularity);
+};
+
 const execute = {
   handleFilter,
   handleScrollToTop,
   handleCalculateAge,
+  handleSortPopular
 };
 
 export { execute };

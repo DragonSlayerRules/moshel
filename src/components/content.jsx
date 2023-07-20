@@ -13,7 +13,7 @@ function Content(param) {
       .catch((error) => {
         console.error(error);
       });
-  }, []);
+  }, [param]);
 
   return (
     <div className="container mx-auto px-4 my-2 sm:my-4">
