@@ -98,7 +98,6 @@ function Layout({ children }) {
                 <a
                   href={`https://www.instagram.com/richard_angkasa_/?hl=id`}
                   target="_blank"
-                  without
                   rel="noreferrer"
                   className="flex gap-2 text-highlight font-2xl"
                 >

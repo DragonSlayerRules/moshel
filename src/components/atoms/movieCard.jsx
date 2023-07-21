@@ -3,6 +3,7 @@ import save from "../../assets/logo/save.svg";
 import { Link } from "react-router-dom";
 import { execute } from "../../services/funtion";
 import { get } from "../../services/service";
+import SkeletonCard from "../protons/skeletonCard";
 
 function MovieCard(p) {
   const { data , type, location } = p
@@ -63,12 +64,7 @@ function MovieCard(p) {
            </div>
             </Link>
           ))
-        : [1, 2, 3, 4, 5, 6].map((unit) => (
-            <div
-              className="w-full aspect-[3/6] animate-pulse bg-gray-400 rounded-2xl"
-              key={unit}
-            ></div>
-          ))}
+        : <SkeletonCard/>}
     </>
   );
 }

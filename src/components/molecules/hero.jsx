@@ -40,6 +40,8 @@ function Hero() {
     }
   }, [movieData, num]);
 
+  console.log('hero', movieData)
+
   return (
     <>
       <div className="w-full container mx-auto px-4 grid grid-cols-12 my-2 sm:my-4">
@@ -153,7 +155,7 @@ function Hero() {
             <div className="font-bold text-2xl p-4 z-10 bg-secondary text-highlight rounded-t-2xl rounded-b-md sticky top-0">
               <div>Now Playing</div>
             </div>
-            {movieData?.map((unit, index) => {
+            {movieData.length !== 0 ? movieData?.map((unit, index) => {
               return (
                 <div
                   className=" flex items-start gap-2 cursor-pointer bg-secondary p-4 rounded-md"
@@ -175,7 +177,7 @@ function Hero() {
                   </div>
                 </div>
               );
-            })}
+            }) : [1,2,3,4,5].map(unit => <div key={unit} className="w-full h-40 animate-pulse bg-gray-400 rounded-2xl"></div>)}
           </div>
         </div>
       </div>

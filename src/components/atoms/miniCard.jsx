@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import notFound from "../../assets/notFound.jpeg";
 import { execute } from "../../services/funtion";
+import SkeletonCard from "../protons/skeletonCard";
 
 function MiniCard(p) {
   const { data, type } = p;
@@ -23,7 +24,7 @@ function MiniCard(p) {
 
       <div className="flex overflow-scroll">
         <div className="flex gap-2">
-          {(type === "creditCast" ? data : execute.handleSortPopular(data))?.map(
+          {data ? (type === "creditCast" ? data : execute.handleSortPopular(data))?.map(
             (unit, index) => (
               <Link
                 to={
@@ -71,7 +72,7 @@ function MiniCard(p) {
                 </div>
               </Link>
             )
-          )}
+          ) : <SkeletonCard/>}
         </div>
       </div>
     </div>

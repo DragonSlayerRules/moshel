@@ -95,6 +95,8 @@ const getPersonDetails = async (params, type) => {
 };
 
 const getMovieDetails = async (params, type) => {
+  console.log("SERVICE MASUK")
+  console.log('services:', params)
   try {
     const response = await fetch(
       `https://api.themoviedb.org/3/${params.type}/${params.userId}${
@@ -115,6 +117,19 @@ const getMovieDetails = async (params, type) => {
   }
 };
 
+const getTrending = async (params) => {
+  try {
+    const response = await 
+    fetch(`https://api.themoviedb.org/3/trending/all/${params}?language=en-US`, options)
+    const response_1 = response.json()
+    return response_1
+
+  } catch (error) {
+     console.error(error);
+    
+  }
+}
+
 const get = {
   getMovie,
   getGenres,
@@ -122,6 +137,7 @@ const get = {
   getSearch,
   getPersonDetails,
   getMovieDetails,
+  getTrending,
 };
 
 export { get };
