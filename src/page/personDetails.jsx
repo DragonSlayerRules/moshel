@@ -115,14 +115,17 @@ function PersonDetails() {
                 Personal Info
               </div>
               <div className="text-highlight text-base">
-                <span className="font-bold">Birthday: </span>
-                {data?.person?.known_for_department} (
-                {execute.handleCalculateAge(data?.person?.birthday)})
+                <span className="font-bold">Known for: </span>
+                {data?.person?.known_for_department}
               </div>
               <div className="text-highlight">
                 <span className="font-bold">Birthday: </span>
                 {data?.person?.birthday} (
-                {execute.handleCalculateAge(data?.person?.birthday)})
+                {execute.handleCalculateAge(
+                  data?.person?.birthday,
+                  data?.person?.deathday
+                )}
+                )
               </div>
               <div className="text-highlight">
                 <span className="font-bold">Place of Birth: </span>
@@ -130,10 +133,7 @@ function PersonDetails() {
               </div>
               <div className="text-highlight">
                 <span className="font-bold">Deathday: </span>
-                {data?.person?.deathday ? data?.person?.deathday : "-"}{" "}
-                {data?.person?.deathday
-                  ? execute.handleCalculateAge(data?.person?.deathday)
-                  : ""}
+                {data?.person?.deathday ? data?.person?.deathday : "-"}
               </div>
               <div className="text-highlight">
                 <span className="font-bold">Gender: </span>
@@ -147,12 +147,15 @@ function PersonDetails() {
             {data?.person?.name}
           </div>
           <div className="flex flex-col gap-2">
-            <div className="">
-              <div className="text-xl font-bold ">Biography</div>
-              <div className="h-40 overflow-auto">
-                {data?.person?.biography ? data?.person?.biography : "-"}
+            {data?.person?.biography && (
+              <div className="">
+                <div className="text-xl font-bold ">Biography</div>
+                <div className="h-40 overflow-auto">
+                  {data?.person?.biography ? data?.person?.biography : "-"}
+                </div>
               </div>
-            </div>
+            )}
+
             <div className="">
               <MiniCard
                 data={data?.credits?.cast?.slice(0, 20)}

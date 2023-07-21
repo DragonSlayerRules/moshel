@@ -10,9 +10,9 @@ import Error from './page/error'
 import Search from "./page/search";
 import MovieDetails from "./page/movieDetails";
 import PersonDetails from "./page/personDetails";
-import Explore from "./page/explore";
 import Auth from "./page/auth";
 import Test from "./page/test";
+import Discover from "./page/discover";
 
 function App() {
   return (
@@ -20,8 +20,8 @@ function App() {
         <Routes>
           <Route index element={<Home />} />
           <Route path="/details/:type/:userId" element={<MovieDetails/>}/>
-          <Route path="/search/:query/:page" element={<Search/>}/>
-          <Route path="/explore/:page" element={<Explore/>}/>
+          <Route path="/search/:type/:query/:page" element={<Search/>}/>
+          <Route path="/discover/:type/:page" element={<Discover/>}/>
           <Route path="/profile/:userId" element={<PersonDetails/>}/>
           <Route path="/auth" element={<Auth/>}/>
           <Route path="*" element={<Error/>}/>

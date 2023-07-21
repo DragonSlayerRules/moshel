@@ -60,8 +60,15 @@ function MovieDetails() {
       });
   }, [params]);
 
+
+  console.log(data)
   return (
     <>
+      {/* <img
+                  src={`https://image.tmdb.org/t/p/w500/${data?.details?.backdrop_path}`}
+                  alt=""
+                  className="aspect-[3/4] object-cover h-fit col-span-1 rounded-md"
+                /> */}
       <div className="container mx-auto px-4 grid grid-cols-12 gap-2 my:gap-4 my-2 sm:mt-4 sm:mb-40">
         <div className="col-span-full xl:col-span-8">
           <div

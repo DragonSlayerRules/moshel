@@ -14,7 +14,7 @@ function Layout({ children }) {
 
   const handleSearch = (e) => {
     e.preventDefault();
-    navigate(`/search/${encodeURIComponent(query)}/1`);
+    navigate(`/search/movie/${encodeURIComponent(query)}/1`);
   };
 
   return (
@@ -51,7 +51,7 @@ function Layout({ children }) {
               src={compass}
               alt=""
               className="aspect-square h-8 cursor-pointer hover:scale-105 duration-500"
-              onClick={() => navigate(`/explore/1`)}
+              onClick={() => navigate(`/discover/movie/1`)}
             />
           </div>
           <div className="flex items-center gap-4">
@@ -80,21 +80,33 @@ function Layout({ children }) {
           <div className="w-full sm:w-1/2 flex flex-col items-start sm:items-end gap-2">
             <div>
               <div className="text-2xl font-revxRegular text-highlight">
-                CONTACT
+                DEVELOPER CONTACT
               </div>
               <div className="space-y-2">
-                <div className="flex gap-2 text-highlight font-2xl">
+                <a
+                  href="mailto:richardangkasa01@gmail.com"
+                  className="flex gap-2 text-highlight font-2xl"
+                >
                   <img src={email} alt="" />
-                  moshel@gmail.com
-                </div>
-                <div className="flex gap-2 text-highlight font-2xl">
+                  richardangkasa01@gmail.com
+                </a>
+                <a
+                  href="https://api.whatsapp.com/send?phone=6281298819667"
+                  className="flex gap-2 text-highlight font-2xl"
+                >
                   <img src={call} alt="" />
                   +62 8124 8199 227
-                </div>
-                <div className="flex gap-2 text-highlight font-2xl">
+                </a>
+                <a
+                  href={`https://www.instagram.com/richard_angkasa_/?hl=id`}
+                  target="_blank"
+                  without
+                  rel="noreferrer"
+                  className="flex gap-2 text-highlight font-2xl"
+                >
                   <img src={insta} alt="" />
-                  moshel.id
-                </div>
+                  richard_angkasa_
+                </a>
               </div>
             </div>
           </div>

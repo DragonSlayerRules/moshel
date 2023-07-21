@@ -47,7 +47,7 @@ const getDiscover = async (filter, params) => {
   try {
     const response = await fetch(
       `https://api.themoviedb.org/3/discover/${
-        filter?.type ? filter.type : "movie"
+        params.type ? params.type : "movie"
       }?include_adult=false&include_video=false&language=en-US&page=${
         params.page
       }&sort_by=${filter?.sort ? filter.sort : "popularity.desc"}${
@@ -62,10 +62,10 @@ const getDiscover = async (filter, params) => {
   }
 };
 
-const getSearch = async (filter, params) => {
+const getSearch = async (params) => {
   try {
     const response = await fetch(
-      `https://api.themoviedb.org/3/search/${filter}?query=${params.query}&page=${params.page}`,
+      `https://api.themoviedb.org/3/search/${params.type}?query=${params.query}&page=${params.page}`,
       options
     );
     const response_1 = await response.json();
