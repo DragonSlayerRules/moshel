@@ -74,7 +74,6 @@ function Discover() {
               } text-highlight font-bold p-2 space-x-1 bg-primary/20 w-full cursor-pointer text-center`}
               onClick={() => {
                 execute.handleScrollToTop();
-
                 navigate(`/discover/tv/1`);
               }}
             >
@@ -84,7 +83,7 @@ function Discover() {
           <div className="px-4 mt-2">
             <div className="text-xl font-bold text-highlight">Sort</div>
             <select
-              id="cars"
+              id="sort"
               onChange={(e) =>
                 setFilter((prev) => ({
                   ...prev,
@@ -93,17 +92,19 @@ function Discover() {
               }
               className="bg-primary/20 text-highlight outline-none font-bold rounded-md p-2 w-full"
             >
-              {sortList.map((unit, index) => (
-                <option value={unit} key={index}>
-                  {unit}
-                </option>
-              ))}
+              {execute
+                .handleClearDotsAndUnderscore(sortList)
+                .map((unit, index) => (
+                  <option value={unit} key={index}>
+                    {unit}
+                  </option>
+                ))}
             </select>
           </div>
           <div className="px-4">
             <div className="text-xl font-bold text-highlight">Genre</div>
             <select
-              id="cars"
+              id="genre"
               onChange={(e) =>
                 setFilter((prev) => ({
                   ...prev,
@@ -146,6 +147,7 @@ function Discover() {
           ""
         )}
         <Pagination
+          from="discover"
           params={params}
           totalPage={data?.total_pages}
           totalResult={data?.total_results}

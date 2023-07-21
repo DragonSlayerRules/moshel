@@ -47,11 +47,13 @@ function MiniCard(p) {
                     />
                   </div>
                 ) : (
-                  <img
+                 <div className="aspect-[3/4] bg-gray-500">
+                   <img
                     src={notFound}
                     className="aspect-[3/4] object-cover"
                     alt=""
                   />
+                 </div>
                 )}
 
                 <div className="bg-white/50 truncate px-2 py-1 font-bold text-lg text-secondary leading-tight">

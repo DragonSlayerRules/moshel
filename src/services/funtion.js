@@ -37,11 +37,17 @@ const handleSortPopular = (data) => {
   return data?.sort((a, b) => b.popularity - a.popularity);
 };
 
+
+const handleClearDotsAndUnderscore = (sortList) => {
+  return sortList.map((sortString) => sortString.replace(/_/g, " ").replace(/\./g, " "));
+};
+
 const execute = {
   handleFilter,
   handleScrollToTop,
   handleCalculateAge,
-  handleSortPopular
+  handleSortPopular,
+  handleClearDotsAndUnderscore
 };
 
 export { execute };

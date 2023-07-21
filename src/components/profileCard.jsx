@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 function ProfileCard({data}) {
   return (
-    <div className="space-y-2 col-span-full">
+    <>
       {data?.map((unit, index) => (
         <Link to={`/profile/${unit.id}`} key={index} className="flex h-32 w-full rounded-2xl overflow-clip">
           {unit.profile_path ? (
@@ -28,7 +28,8 @@ function ProfileCard({data}) {
           </div>
         </Link>
       ))}
-    </div>
+    </>
+    
   );
 }
 

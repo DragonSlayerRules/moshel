@@ -47,18 +47,25 @@ function Search() {
         </div>
       </div>
       <div className="col-span-full lg:col-span-3 xl:col-span-5">
-       {data?.total_results ?  <div className="grid gap-2 sm:gap-2 grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 xl:grid-cols-5 mb-2">
-          {params.type && params.type !== "person" ? (
-            <MovieCard
-              data={data?.results}
-              type={params.type}
-              location="back"
-            />
+        {data?.total_results ? (
+          params.type && params.type !== "person" ? (
+            <div className="grid gap-2 sm:gap-2 grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 xl:grid-cols-5 mb-2">
+              <MovieCard
+                data={data?.results}
+                type={params.type}
+                location="back"
+              />
+            </div>
           ) : (
-            <ProfileCard data={data?.results} />
-          )}
-        </div> : ''}
+            <div className="grid gap-2 sm:gap-2 sm:grid-cols-2 xl:grid-cols-3 mb-2">
+              <ProfileCard data={data?.results} />
+            </div>
+          )
+        ) : (
+          ""
+        )}
         <Pagination
+          from="search"
           params={params}
           totalPage={data?.total_pages}
           totalResult={data?.total_results}

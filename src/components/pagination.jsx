@@ -3,15 +3,16 @@ import { execute } from "../services/funtion";
 import { useNavigate } from "react-router-dom";
 
 export default function Pagination(p) {
-  const { params, totalPage, totalResult } = p;
-  console.log(
-    "page:",
-    params.page,
-    "totalPage:",
-    totalPage,
-    "totalResult:",
-    totalResult
-  );
+  const { from, params, totalPage, totalResult } = p;
+  // console.log(
+  //   "from:", from,
+  //   "params:",
+  //   params,
+  //   "totalPage:",
+  //   totalPage,
+  //   "totalResult:",
+  //   totalResult
+  // );
   const navigate = useNavigate();
 
   const [flag, setFlag] = useState({
@@ -21,25 +22,43 @@ export default function Pagination(p) {
 
   let pages = [];
 
-  for (let i = flag.start; i <= (totalPage < 5 ? totalPage : flag.end); i++) {
+  for (let i = flag.start; i <= flag.end; i++) {
     pages.push(i);
   }
 
   return (
     <div className="flex items-center justify-between border-t border-highlight bg-secondary rounded-2xl p-4">
       <div className="flex flex-1 justify-between sm:hidden">
-        <a
-          href={`${params.page !== 1 && params.page - 1}`}
+        <div
+          onClick={() => {
+            execute.handleScrollToTop();
+            if (params.page > 1) {
+              navigate(
+                `/${from}/${params.type}${
+                  from === "search" ? "/" + params.query : ""
+                }/${Number(params.page) - 1}`
+              );
+            }
+          }}
           className="relative inline-flex items-center rounded-md border border-highlight hover:text-secondary text-highlight px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50"
         >
           Previous
-        </a>
-        <a
-          href={`${params.page + 1}`}
+        </div>
+        <div
+           onClick={() => {
+            execute.handleScrollToTop();
+            if (params.page < totalPage) {
+              navigate(
+                `/${from}/${params.type}${
+                  from === "search" ? "/" + params.query : ""
+                }/${Number(params.page) + 1}`
+              );
+            }
+          }}
           className="relative ml-3 inline-flex items-center rounded-md border border-highlight hover:text-secondary text-highlight px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50"
         >
           Next
-        </a>
+        </div>
       </div>
       <div className="hidden sm:flex sm:flex-1 sm:items-center sm:justify-between">
         <div>
@@ -76,15 +95,18 @@ export default function Pagination(p) {
               </div>
 
               {pages?.map(
-                (unit) =>
+                (unit, index) =>
                   unit <= totalPage && (
                     <div
                       onClick={() => {
                         execute.handleScrollToTop();
                         navigate(
-                          `/search/${params.type}/${params.query}/${unit}`
+                          `/${from}/${params.type}${
+                            from === "search" ? "/" + params.query : ""
+                          }/${unit}`
                         );
                       }}
+                      key={index}
                       aria-current="page"
                       className={`${
                         params.page === unit.toString()

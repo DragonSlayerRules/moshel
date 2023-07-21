@@ -12,11 +12,6 @@ function Layout({ children }) {
   const navigate = useNavigate();
   const [query, setQuery] = useState();
 
-  const handleSearch = (e) => {
-    e.preventDefault();
-    navigate(`/search/movie/${encodeURIComponent(query)}/1`);
-  };
-
   return (
     <>
       <div className="bg-secondary z-40">
@@ -30,7 +25,10 @@ function Layout({ children }) {
             />
             <form
               className="h-10 items-center flex duration-500 transition-all"
-              onSubmit={handleSearch}
+              onSubmit={(e) => {
+                e.preventDefault();
+                navigate(`/search/movie/${encodeURIComponent(query)}/1`);
+              }}
             >
               <input
                 placeholder="movie"
@@ -54,7 +52,7 @@ function Layout({ children }) {
               onClick={() => navigate(`/discover/movie/1`)}
             />
           </div>
-          <div className="flex items-center gap-4">
+          <div className="flex gap-4">
             <Link
               to="/auth"
               className="border border-highligt text-highlight h-10 px-2 sm:px-4 text-base sm:text-lg flex items-center rounded-md"
