@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import arrowLeft from "../assets/logo/arrowLeft.svg";
-import MiniCard from "../components/miniCard";
+import MiniCard from "../components/atoms/miniCard";
 import { get } from "../services/service";
 import { execute } from "../services/funtion";
 

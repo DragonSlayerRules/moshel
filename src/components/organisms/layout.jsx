@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { BiSearch } from "react-icons/bi";
-import logo from "../assets/frameWhite.png";
-import email from "../assets/logo/email.svg";
-import call from "../assets/logo/call.svg";
-import insta from "../assets/logo/insta.svg";
-import compass from "../assets/logo/compass.svg";
+import logo from "../../assets/frameWhite.png";
+import email from "../../assets/logo/email.svg";
+import call from "../../assets/logo/call.svg";
+import insta from "../../assets/logo/insta.svg";
+import compass from "../../assets/logo/compass.svg";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 

@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import notFound from "../assets/notFound.jpeg";
-import { execute } from "../services/funtion";
+import notFound from "../../assets/notFound.jpeg";
+import { execute } from "../../services/funtion";
 
 function MiniCard(p) {
   const { data, type } = p;

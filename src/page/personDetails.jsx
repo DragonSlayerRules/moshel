@@ -4,7 +4,7 @@ import instagram from "../assets/logo/instagram.svg";
 import twitter from "../assets/logo/twitter.svg";
 import tiktok from "../assets/logo/tiktok.svg";
 import arrowLeft from "../assets/logo/arrowLeft.svg";
-import MiniCard from "../components/miniCard";
+import MiniCard from "../components/atoms/miniCard";
 import { get } from "../services/service";
 import { execute } from "../services/funtion";
 

@@ -1,14 +1,14 @@
 import React from "react";
-import Hero from "../components/hero";
-import Content from "../components/content";
+import Hero from "../components/molecules/hero";
+import Content from "../components/molecules/content";
 
 function Home() {
   return (
     <div>
       <Hero />
-      {Content("popular")}
-      {Content("topRated")}
-      {Content("upComing")}
+      <Content param="popular" />
+      <Content param="topRated" />
+      <Content param="upComing" />
     </div>
   );
 }

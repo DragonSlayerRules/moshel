@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import save from "../assets/logo/save.svg";
+import save from "../../assets/logo/save.svg";
 import { Link } from "react-router-dom";
-import { execute } from "../services/funtion";
-import { get } from "../services/service";
+import { execute } from "../../services/funtion";
+import { get } from "../../services/service";
 
 function MovieCard(p) {
   const { data , type, location } = p
@@ -25,7 +25,7 @@ function MovieCard(p) {
         ? data.map((unit, index) => (
             <Link
               to={`/details/${type}/${unit.id}`}
-              className={`${location === 'front' ? 'w-40 sm:w-52' : 'w-full'} rounded-md sm:rounded-2xl overflow-hidden cursor-pointer aspect-[3/6] relative`}
+              className={`${location === 'front' ? 'w-40 sm:w-52' : 'w-full'} snap-start rounded-md sm:rounded-2xl overflow-hidden cursor-pointer aspect-[3/6] relative`}
               key={index}
             >
            <div className="aspect-3/4 bg-gray-500">

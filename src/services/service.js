@@ -22,7 +22,7 @@ const getMovie = async (param) => {
       options
     );
     const response_1 = await response.json();
-    return response_1.results.slice(0, 10);
+    return response_1.results;
   } catch (err) {
     return console.error(err);
   }

@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import arrowLeft from "../assets/logo/arrowLeft.svg";
-import arrowRight from "../assets/logo/arrowRight.svg";
-import dropDown from "../assets/logo/arrowDown.svg";
-import { get } from "../services/service";
-import { execute } from "../services/funtion";
+import arrowLeft from "../../assets/logo/arrowLeft.svg";
+import arrowRight from "../../assets/logo/arrowRight.svg";
+import dropDown from "../../assets/logo/arrowDown.svg";
+import { get } from "../../services/service";
+import { execute } from "../../services/funtion";
 import { useNavigate } from "react-router-dom";
 
 function Hero() {

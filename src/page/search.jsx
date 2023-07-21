@@ -1,8 +1,8 @@
 import React, { useMemo, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import MovieCard from "../components/movieCard";
-import Pagination from "../components/pagination";
-import ProfileCard from "../components/profileCard";
+import MovieCard from "../components/atoms/movieCard";
+import Pagination from "../components/molecules/pagination";
+import ProfileCard from "../components/atoms/profileCard";
 import { get } from "../services/service";
 import { execute } from "../services/funtion";
 

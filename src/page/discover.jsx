@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { get } from "../services/service";
-import MovieCard from "../components/movieCard";
-import Pagination from "../components/pagination";
+import MovieCard from "../components/atoms/movieCard";
+import Pagination from "../components/molecules/pagination";
 import { useNavigate, useParams } from "react-router-dom";
 import { execute } from "../services/funtion";
 
@@ -39,8 +39,9 @@ function Discover() {
       });
   }, [filter, params]);
 
+
   useEffect(() => {
-    handleDiscover();
+    handleDiscover()
     get
       .getGenres(params.type)
       .then((results) => {
@@ -101,7 +102,7 @@ function Discover() {
                 ))}
             </select>
           </div>
-          <div className="px-4">
+          <div className="px-4 pb-4">
             <div className="text-xl font-bold text-highlight">Genre</div>
             <select
               id="genre"
@@ -122,15 +123,14 @@ function Discover() {
               ))}
             </select>
           </div>
-
-          <div className="p-4">
+          {/* <div className="p-4">
             <button
               className="border border-highlight w-full text-center py-2 text-base font-medium text-highlight rounded-md"
               onClick={handleDiscover}
             >
               Search
             </button>
-          </div>
+          </div> */}
         </div>
       </div>
 

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { execute } from "../services/funtion";
+import { execute } from "../../services/funtion";
 import { useNavigate } from "react-router-dom";
 
 export default function Pagination(p) {
