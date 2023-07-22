@@ -39,9 +39,8 @@ function Discover() {
       });
   }, [filter, params]);
 
-
   useEffect(() => {
-    handleDiscover()
+    handleDiscover();
     get
       .getGenres(params.type)
       .then((results) => {

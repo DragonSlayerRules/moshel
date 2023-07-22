@@ -7,11 +7,10 @@ function Home() {
   return (
     <div>
       <Hero />
-      <Trending/>
+      <Trending />
       <Content param="popular" />
       <Content param="topRated" />
       <Content param="upComing" />
-
     </div>
   );
 }

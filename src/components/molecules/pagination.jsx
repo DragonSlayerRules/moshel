@@ -65,8 +65,8 @@ export default function Pagination(p) {
           </>
         ) : (
           <p className="text-base text-highlight font-bold">
-          Nothing Here, try somthing else
-        </p>
+            Nothing Here, try somthing else
+          </p>
         )}
       </div>
       <div className="hidden sm:flex sm:flex-1 sm:items-center sm:justify-between">

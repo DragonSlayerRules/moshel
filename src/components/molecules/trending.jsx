@@ -17,7 +17,7 @@ function Trending() {
       });
   }, [flag]);
   return (
-    <SectionWrap param='trending'>
+    <SectionWrap param="trending">
       <TrendingCard data={trendingData?.results} />
     </SectionWrap>
   );

@@ -9,9 +9,7 @@ function MiniCard(p) {
   return (
     <div
       className={`${
-        type === "creditCast" || type === "recommend"
-          ? "p-4 rounded-md"
-          : "p-0"
+        type === "creditCast" || type === "recommend" ? "p-4 rounded-md" : "p-0"
       } space-y-2 bg-secondary overflow-clip`}
     >
       <div className="text-base sm:text-xl font-bold text-highlight">
@@ -24,8 +22,11 @@ function MiniCard(p) {
 
       <div className="flex overflow-scroll">
         <div className="flex gap-2">
-          {data ? (type === "creditCast" ? data : execute.handleSortPopular(data))?.map(
-            (unit, index) => (
+          {data ? (
+            (type === "creditCast"
+              ? data
+              : execute.handleSortPopular(data)
+            )?.map((unit, index) => (
               <Link
                 to={
                   type === "creditCast"
@@ -48,13 +49,13 @@ function MiniCard(p) {
                     />
                   </div>
                 ) : (
-                 <div className="aspect-[3/4] bg-gray-500">
-                   <img
-                    src={notFound}
-                    className="aspect-[3/4] object-cover"
-                    alt=""
-                  />
-                 </div>
+                  <div className="aspect-[3/4] bg-gray-500">
+                    <img
+                      src={notFound}
+                      className="aspect-[3/4] object-cover"
+                      alt=""
+                    />
+                  </div>
                 )}
 
                 <div className="bg-white/50 truncate px-2 py-1 font-bold text-lg text-secondary leading-tight">
@@ -71,8 +72,10 @@ function MiniCard(p) {
                   </div>
                 </div>
               </Link>
-            )
-          ) : <SkeletonPotrait width='fit' aspect='3/4'/>}
+            ))
+          ) : (
+            <SkeletonPotrait width="fit" aspect="3/4" />
+          )}
         </div>
       </div>
     </div>

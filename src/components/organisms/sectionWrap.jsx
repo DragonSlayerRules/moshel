@@ -1,7 +1,7 @@
 import React from "react";
 
 function SectionWrap({ children, param }) {
-// const [flag, setFlag] = useState('today')
+  // const [flag, setFlag] = useState('today')
   return (
     <div>
       <div className="container mx-auto px-4 my-2 sm:my-6 ">

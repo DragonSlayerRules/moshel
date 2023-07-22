@@ -149,7 +149,9 @@ function PersonDetails() {
           <div className="flex flex-col gap-2">
             {data?.person?.biography && (
               <div className="">
-                <div className="text-xl font-bold border-b sm:border-b-0">Biography</div>
+                <div className="text-xl font-bold border-b sm:border-b-0">
+                  Biography
+                </div>
                 <div className="h-40 overflow-auto">
                   {data?.person?.biography ? data?.person?.biography : "-"}
                 </div>

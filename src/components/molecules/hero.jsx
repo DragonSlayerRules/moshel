@@ -41,7 +41,7 @@ function Hero() {
     }
   }, [movieData, num]);
 
-  console.log('slide:', slide)
+  console.log("slide:", slide);
 
   return (
     <>

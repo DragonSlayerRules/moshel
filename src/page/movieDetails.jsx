@@ -74,25 +74,25 @@ function MovieDetails() {
             </div>
             <img src={arrowLeft} alt="" className="xl:hidden" />
           </div>
-       <div className="aspect-video bg-gray-300 rounded-md overflow-clip">
-       {link ? (
-            <iframe
-              src={`https://www.youtube.com/embed/${link}`}
-              className="w-full aspect-video"
-              title={data?.details?.title}
-            ></iframe>
-          ) : data?.details?.backdrop_path ? (
-            <img
-              src={`https://image.tmdb.org/t/p/w500/${data?.details?.backdrop_path}`}
-              alt=""
-              className="aspect-video object-cover h-full"
-            />
-          ) : (
-            <div className="aspect-video bg-gray-300 w-full h-full flex justify-center items-center font-bold text-secondary">
-              Image not Found
-            </div>
-          )}
-       </div>
+          <div className="aspect-video bg-gray-300 rounded-md overflow-clip">
+            {link ? (
+              <iframe
+                src={`https://www.youtube.com/embed/${link}`}
+                className="w-full aspect-video"
+                title={data?.details?.title}
+              ></iframe>
+            ) : data?.details?.backdrop_path ? (
+              <img
+                src={`https://image.tmdb.org/t/p/w500/${data?.details?.backdrop_path}`}
+                alt=""
+                className="aspect-video object-cover h-full"
+              />
+            ) : (
+              <div className="aspect-video bg-gray-300 w-full h-full flex justify-center items-center font-bold text-secondary">
+                Image not Found
+              </div>
+            )}
+          </div>
           <div className="hidden xl:block mt-2 space-y-2">
             {data?.casts?.cast?.length !== 0 && (
               <MiniCard
@@ -126,7 +126,9 @@ function MovieDetails() {
               )}
 
               <div className="col-span-2 h-fit text-highlight">
-                <div className="font-bold text-base sm:text-2xl">{data?.details?.title}</div>
+                <div className="font-bold text-base sm:text-2xl">
+                  {data?.details?.title}
+                </div>
                 <div className="text-sm sm:text-lg font-light">
                   <span className="font-bold">Genre:</span>{" "}
                   {data?.details?.genres.map((unit) => unit?.name).join(", ")}

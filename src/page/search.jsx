@@ -37,7 +37,7 @@ function Search() {
               onClick={() => {
                 execute.handleScrollToTop();
                 navigate(`/search/${unit}/${params.query}/1`);
-                setData()
+                setData();
               }}
               key={index}
             >

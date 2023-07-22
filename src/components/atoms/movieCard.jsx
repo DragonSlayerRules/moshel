@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import save from "../../assets/logo/save.svg";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { execute } from "../../services/funtion";
 import { get } from "../../services/service";
 import SkeletonPotrait from "../protons/skeletonPotrait";
@@ -8,6 +8,7 @@ import SkeletonPotrait from "../protons/skeletonPotrait";
 function MovieCard(p) {
   const { data, type, location } = p;
   const [genres, setGenres] = useState();
+  const navigate = useNavigate();
 
   useEffect(() => {
     get
@@ -24,8 +25,8 @@ function MovieCard(p) {
     <>
       {data ? (
         data.map((unit, index) => (
-          <Link
-            to={`/details/${type}/${unit.id}`}
+          <div
+            onClick={() => navigate(`/details/${type}/${unit.id}`)}
             className={`${
               location === "front" ? "w-40 sm:w-52" : "w-full"
             } snap-start rounded-md overflow-hidden cursor-pointer aspect-[1/2] relative`}
@@ -35,13 +36,17 @@ function MovieCard(p) {
               <div>
                 <div>
                   <img
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      navigate(`/auth/login}`);
+                    }}
                     src={save}
                     alt=""
                     className="absolute w-8 sm:w-12 rounded-tl-md"
                   />
                 </div>
                 {unit.poster_path ? (
-                  <div className="aspect-[3/4] w-full bg-gray-400">
+                  <div className="aspect-[3/4] w-full bg-gray-300 ">
                     <img
                       src={`https://image.tmdb.org/t/p/w500/${unit.poster_path}`}
                       alt=""
@@ -66,10 +71,13 @@ function MovieCard(p) {
                 <div className="underline-offset-1 underline">view details</div>
               </div>
             </div>
-          </Link>
+          </div>
         ))
       ) : (
-        <SkeletonPotrait width={location === 'back' ? 'full' : 'fit'} aspect='1/2'/>
+        <SkeletonPotrait
+          width={location === "back" ? "full" : "fit"}
+          aspect="1/2"
+        />
       )}
     </>
   );

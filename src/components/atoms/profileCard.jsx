@@ -35,7 +35,7 @@ function ProfileCard({ data }) {
           </Link>
         ))
       ) : (
-        <SkeletonLandscape width='full'/>
+        <SkeletonLandscape width="full" />
       )}
     </>
   );

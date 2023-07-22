@@ -15,7 +15,9 @@ const handleScrollToTop = () => {
 };
 
 const handleCalculateAge = (birthDate, deathDate) => {
-  if (!birthDate) {return}
+  if (!birthDate) {
+    return;
+  }
   const birthDateObj = new Date(birthDate);
   const currentDate = new Date();
 
@@ -37,9 +39,10 @@ const handleSortPopular = (data) => {
   return data?.sort((a, b) => b.popularity - a.popularity);
 };
 
-
 const handleClearDotsAndUnderscore = (sortList) => {
-  return sortList.map((sortString) => sortString.replace(/_/g, " ").replace(/\./g, " "));
+  return sortList.map((sortString) =>
+    sortString.replace(/_/g, " ").replace(/\./g, " ")
+  );
 };
 
 const execute = {
@@ -47,7 +50,7 @@ const execute = {
   handleScrollToTop,
   handleCalculateAge,
   handleSortPopular,
-  handleClearDotsAndUnderscore
+  handleClearDotsAndUnderscore,
 };
 
 export { execute };
