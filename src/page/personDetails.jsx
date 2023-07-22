@@ -56,7 +56,7 @@ function PersonDetails() {
       <div className="grid grid-cols-12 bg-secondary rounded-2xl overflow-clip gap-4 p-4">
         <div className="col-span-full sm:col-span-4 ">
           <div
-            className="p-4 bg-black/80 absolute rounded-tl-md rounded-br-md cursor-pointer"
+            className="p-4 bg-black/80 absolute rounded-tl-sm rounded-br-sm cursor-pointer"
             onClick={() => navigate(-1)}
           >
             <div className="hidden xl:block text-white font-2xl font-bold">
@@ -68,16 +68,16 @@ function PersonDetails() {
             <img
               src={`https://image.tmdb.org/t/p/w500/${data?.person?.profile_path}`}
               alt=""
-              className="w-1/2 sm:w-full mx-auto aspect-square sm:aspect-[3/4] object-cover rounded-md"
+              className="w-1/2 sm:w-full mx-auto aspect-square sm:aspect-[3/4] object-cover rounded-sm"
             />
           ) : (
-            <div className="aspect-square sm:aspect-[3/4] bg-gray-400 font-bold text-2xl flex items-center justify-center rounded-md">
+            <div className="aspect-square sm:aspect-[3/4] w-1/2 sm:w-full mx-auto bg-gray-400 font-bold text-2xl flex items-center text-center rounded-sm">
               Image Not Found
             </div>
           )}
           <div className=" flex flex-col gap-4 sm:flex-col-reverse  mt-2">
             <div className="">
-              <div className="font-bold text-2xl sm:hidden text-highlight text-center sm:text-start">
+              <div className="font-bold text-xl sm:text-2xl sm:hidden text-highlight text-center sm:text-start">
                 {data?.person?.name}
               </div>
               <div className="flex gap-4 mx-auto sm:mx-0 w-fit">
@@ -110,15 +110,15 @@ function PersonDetails() {
                 )}
               </div>
             </div>
-            <div className="text-center sm:text-start">
-              <div className="font-bold text-2xl text-highlight border-b border-highlight mb-1">
+            <div className="text-start sm:text-start">
+              <div className="font-bold text-base sm:text-2xl text-highlight border-b border-highlight mb-1">
                 Personal Info
               </div>
-              <div className="text-highlight text-base">
+              <div className="text-sm sm:text-base text-highlight">
                 <span className="font-bold">Known for: </span>
                 {data?.person?.known_for_department}
               </div>
-              <div className="text-highlight">
+              <div className="text-sm sm:text-base text-highlight">
                 <span className="font-bold">Birthday: </span>
                 {data?.person?.birthday} (
                 {execute.handleCalculateAge(
@@ -127,15 +127,15 @@ function PersonDetails() {
                 )}
                 )
               </div>
-              <div className="text-highlight">
+              <div className="text-sm sm:text-base text-highlight">
                 <span className="font-bold">Place of Birth: </span>
                 {data?.person?.place_of_birth}
               </div>
-              <div className="text-highlight">
+              <div className="text-sm sm:text-base text-highlight">
                 <span className="font-bold">Deathday: </span>
                 {data?.person?.deathday ? data?.person?.deathday : "-"}
               </div>
-              <div className="text-highlight">
+              <div className="text-sm sm:text-base text-highlight">
                 <span className="font-bold">Gender: </span>
                 {data?.person?.gender === 1 ? "Female" : "Male"}
               </div>
@@ -149,7 +149,7 @@ function PersonDetails() {
           <div className="flex flex-col gap-2">
             {data?.person?.biography && (
               <div className="">
-                <div className="text-xl font-bold ">Biography</div>
+                <div className="text-xl font-bold border-b sm:border-b-0">Biography</div>
                 <div className="h-40 overflow-auto">
                   {data?.person?.biography ? data?.person?.biography : "-"}
                 </div>

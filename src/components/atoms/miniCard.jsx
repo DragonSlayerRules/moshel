@@ -14,7 +14,7 @@ function MiniCard(p) {
           : "p-0"
       } space-y-2 bg-secondary overflow-clip`}
     >
-      <div className="text-xl font-bold text-highlight">
+      <div className="text-base sm:text-xl font-bold text-highlight">
         {type === "creditCast"
           ? "Casts"
           : type === "creditMovie"
@@ -33,7 +33,7 @@ function MiniCard(p) {
                     : `/details/movie/${unit.id}`
                 }
                 key={index}
-                className="overflow-clip rounded-sm w-40"
+                className="overflow-clip rounded-sm w-28 sm:w-40"
               >
                 {unit.profile_path || unit.poster_path ? (
                   <div className="aspect-[3/4] bg-gray-500">

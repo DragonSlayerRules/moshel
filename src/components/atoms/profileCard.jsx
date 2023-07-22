@@ -10,7 +10,7 @@ function ProfileCard({ data }) {
           <Link
             to={`/profile/${unit.id}`}
             key={index}
-            className="flex h-32 w-full rounded-2xl overflow-clip"
+            className="flex h-32 w-full rounded-md overflow-clip"
           >
             {unit.profile_path ? (
               <img

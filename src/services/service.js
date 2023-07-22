@@ -95,8 +95,6 @@ const getPersonDetails = async (params, type) => {
 };
 
 const getMovieDetails = async (params, type) => {
-  console.log("SERVICE MASUK")
-  console.log('services:', params)
   try {
     const response = await fetch(
       `https://api.themoviedb.org/3/${params.type}/${params.userId}${

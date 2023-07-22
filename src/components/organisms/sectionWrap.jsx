@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 
 function SectionWrap({ children, param }) {
-const [flag, setFlag] = useState('today')
+// const [flag, setFlag] = useState('today')
   return (
     <div>
       <div className="container mx-auto px-4 my-2 sm:my-6 ">
@@ -15,16 +15,15 @@ const [flag, setFlag] = useState('today')
               ? "Up Coming"
               : param === "trending" && "Trending"}
           </div>
-          <div className="rounded-sm flex overflow-clip text-sm text-highlight font-bold border-2 border-secondary sm:rounded-md bg-primary mb-2">
+          {/* <div className="rounded-sm flex overflow-clip text-sm text-highlight font-bold border-2 border-secondary sm:rounded-md bg-primary mb-2">
             <div className={`${flag === 'today' ? 'bg-secondary text-highlight' : 'text-secondary' } px-4 py-1 cursor-pointer`} onClick={()=>{
                 setFlag('today')
             }}>TODAY</div>
             <div className={`${flag === 'week' ? 'bg-secondary text-highlight' : 'text-secondary' } px-4 py-1 cursor-pointer`} onClick={()=>{
                 setFlag('week')
             }}>THIS WEEK</div>
-          </div>
+          </div> */}
         </div>
-        {/* <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-2 sm:gap-4"> */}
         <div className="relative overflow-clip mt-1">
           <div className="flex justify-end z-50 w-full h-0">
             <div className="h-[60rem] w-2 z-20 bg-gradient-to-l from-primary absolute"></div>

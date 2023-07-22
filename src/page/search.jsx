@@ -22,8 +22,6 @@ function Search() {
       });
   }, [params]);
 
-  console.log(data)
-
   return (
     <div className="container mx-auto px-4 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-2 sm:gap-4 my-2 sm:my-4">
       <div className="col-span-full lg:col-span-1 bg-secondary h-fit p-4 pb-7 rounded-md lg:sticky lg:top-4">

@@ -126,20 +126,20 @@ function MovieDetails() {
               )}
 
               <div className="col-span-2 h-fit text-highlight">
-                <div className="font-bold text-2xl">{data?.details?.title}</div>
-                <div className="text-lg font-light">
+                <div className="font-bold text-base sm:text-2xl">{data?.details?.title}</div>
+                <div className="text-sm sm:text-lg font-light">
                   <span className="font-bold">Genre:</span>{" "}
                   {data?.details?.genres.map((unit) => unit?.name).join(", ")}
                 </div>
-                <div className="text-lg font-light">
+                <div className="text-sm sm:text-lg font-light">
                   <span className="font-bold">Date:</span>{" "}
                   {data?.details?.release_date}
                 </div>
-                <div className="text-lg font-light">
+                <div className="text-sm sm:text-lg font-light">
                   <span className="font-bold">Duration:</span>{" "}
                   {data?.details?.runtime} Minutes
                 </div>
-                <div className="text-lg font-light">
+                <div className="text-sm sm:text-lg font-light">
                   <span className="font-bold">Production Company:</span>{" "}
                   {data?.details?.production_companies
                     .map((unit) => unit?.name)
@@ -147,7 +147,7 @@ function MovieDetails() {
                 </div>
 
                 {data?.details?.overview && (
-                  <div className="hidden sm:block">
+                  <div className="text-sm sm:text-lg hidden sm:block">
                     <span className="font-bold">Overview: </span>
                     {data?.details?.overview}
                   </div>
@@ -155,12 +155,12 @@ function MovieDetails() {
               </div>
               <div className="col-span-full text-highlight">
                 {data?.details?.overview && (
-                  <div className="sm:hidden">
+                  <div className="text-sm sm:text-lg sm:hidden">
                     <span className="font-bold">Overview:</span>{" "}
                     {data?.details?.overview}
                   </div>
                 )}
-                <div className="border w-full py-2 text-center rounded-sm">
+                <div className="border w-full py-2 text-center rounded-sm mt-2">
                   Save to favorite
                 </div>
               </div>

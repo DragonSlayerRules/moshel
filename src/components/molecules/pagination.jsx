@@ -29,36 +29,45 @@ export default function Pagination(p) {
   return (
     <div className="flex items-center justify-between border-t border-highlight bg-secondary rounded-md p-4">
       <div className="flex flex-1 justify-between sm:hidden">
-        <div
-          onClick={() => {
-            execute.handleScrollToTop();
-            if (params.page > 1) {
-              navigate(
-                `/${from}/${params.type}${
-                  from === "search" ? "/" + params.query : ""
-                }/${Number(params.page) - 1}`
-              );
-            }
-          }}
-          className="relative inline-flex items-center rounded-sm border border-highlight hover:text-secondary text-highlight px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50"
-        >
-          Previous
-        </div>
-        <div
-           onClick={() => {
-            execute.handleScrollToTop();
-            if (params.page < totalPage) {
-              navigate(
-                `/${from}/${params.type}${
-                  from === "search" ? "/" + params.query : ""
-                }/${Number(params.page) + 1}`
-              );
-            }
-          }}
-          className="relative ml-3 inline-flex items-center rounded-sm border border-highlight hover:text-secondary text-highlight px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50"
-        >
-          Next
-        </div>
+        {totalResult ? (
+          <>
+            {" "}
+            <div
+              onClick={() => {
+                execute.handleScrollToTop();
+                if (params.page > 1) {
+                  navigate(
+                    `/${from}/${params.type}${
+                      from === "search" ? "/" + params.query : ""
+                    }/${Number(params.page) - 1}`
+                  );
+                }
+              }}
+              className="relative inline-flex items-center rounded-sm border border-highlight hover:text-secondary text-highlight px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50"
+            >
+              Previous
+            </div>
+            <div
+              onClick={() => {
+                execute.handleScrollToTop();
+                if (params.page < totalPage) {
+                  navigate(
+                    `/${from}/${params.type}${
+                      from === "search" ? "/" + params.query : ""
+                    }/${Number(params.page) + 1}`
+                  );
+                }
+              }}
+              className="relative ml-3 inline-flex items-center rounded-sm border border-highlight hover:text-secondary text-highlight px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50"
+            >
+              Next
+            </div>
+          </>
+        ) : (
+          <p className="text-base text-highlight font-bold">
+          Nothing Here, try somthing else
+        </p>
+        )}
       </div>
       <div className="hidden sm:flex sm:flex-1 sm:items-center sm:justify-between">
         <div>
