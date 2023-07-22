@@ -22,9 +22,11 @@ function Search() {
       });
   }, [params]);
 
+  console.log(data)
+
   return (
     <div className="container mx-auto px-4 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-2 sm:gap-4 my-2 sm:my-4">
-      <div className="col-span-full lg:col-span-1 bg-secondary h-fit p-4 pb-7 rounded-2xl lg:sticky lg:top-4">
+      <div className="col-span-full lg:col-span-1 bg-secondary h-fit p-4 pb-7 rounded-md lg:sticky lg:top-4">
         <div className="text-2xl font-bold text-highlight">Search Result</div>
         <div className="flex flex-col space-y-4 text-highlight mt-4">
           {["movie", "tv", "person"].map((unit, index) => (
@@ -33,11 +35,11 @@ function Search() {
                 params.type === unit
                   ? "bg-highlight text-stroke border-stroke font-bold"
                   : "bg-transparent text-highlight font-medium"
-              } cursor-pointer capitalize border border-highlight px-4 py-2 rounded-md`}
+              } cursor-pointer capitalize border border-highlight px-4 py-2 rounded-sm`}
               onClick={() => {
                 execute.handleScrollToTop();
-                // setFilter(unit);
                 navigate(`/search/${unit}/${params.query}/1`);
+                setData()
               }}
               key={index}
             >

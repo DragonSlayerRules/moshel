@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import notFound from "../../assets/notFound.jpeg";
 import { execute } from "../../services/funtion";
-import SkeletonCard from "../protons/skeletonCard";
+import SkeletonPotrait from "../protons/skeletonPotrait";
 
 function MiniCard(p) {
   const { data, type } = p;
@@ -10,7 +10,7 @@ function MiniCard(p) {
     <div
       className={`${
         type === "creditCast" || type === "recommend"
-          ? "p-4 rounded-2xl"
+          ? "p-4 rounded-md"
           : "p-0"
       } space-y-2 bg-secondary overflow-clip`}
     >
@@ -33,7 +33,7 @@ function MiniCard(p) {
                     : `/details/movie/${unit.id}`
                 }
                 key={index}
-                className="overflow-clip rounded-md w-40"
+                className="overflow-clip rounded-sm w-40"
               >
                 {unit.profile_path || unit.poster_path ? (
                   <div className="aspect-[3/4] bg-gray-500">
@@ -72,7 +72,7 @@ function MiniCard(p) {
                 </div>
               </Link>
             )
-          ) : <SkeletonCard/>}
+          ) : <SkeletonPotrait width='fit' aspect='3/4'/>}
         </div>
       </div>
     </div>

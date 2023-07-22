@@ -60,19 +60,13 @@ function MovieDetails() {
       });
   }, [params]);
 
-
-  console.log(data)
+  console.log(data);
   return (
     <>
-      {/* <img
-                  src={`https://image.tmdb.org/t/p/w500/${data?.details?.backdrop_path}`}
-                  alt=""
-                  className="aspect-[3/4] object-cover h-fit col-span-1 rounded-md"
-                /> */}
       <div className="container mx-auto px-4 grid grid-cols-12 gap-2 my:gap-4 my-2 sm:mt-4 sm:mb-40">
         <div className="col-span-full xl:col-span-8">
           <div
-            className="p-4 bg-black/80 absolute rounded-tl-2xl rounded-br-2xl cursor-pointer"
+            className="p-4 bg-black/80 absolute rounded-tl-md rounded-br-md cursor-pointer"
             onClick={() => navigate(-1)}
           >
             <div className="hidden xl:block text-white font-2xl font-bold">
@@ -80,17 +74,25 @@ function MovieDetails() {
             </div>
             <img src={arrowLeft} alt="" className="xl:hidden" />
           </div>
-          {link ? (
+       <div className="aspect-video bg-gray-300 rounded-md overflow-clip">
+       {link ? (
             <iframe
               src={`https://www.youtube.com/embed/${link}`}
-              className="w-full aspect-video rounded-2xl"
+              className="w-full aspect-video"
               title={data?.details?.title}
             ></iframe>
+          ) : data?.details?.backdrop_path ? (
+            <img
+              src={`https://image.tmdb.org/t/p/w500/${data?.details?.backdrop_path}`}
+              alt=""
+              className="aspect-video object-cover h-full"
+            />
           ) : (
-            <div className="w-full aspect-video rounded-2xl bg-gray-500 flex items-center justify-center text-2xl">
-              Video not Found
+            <div className="aspect-video bg-gray-300 w-full h-full flex justify-center items-center font-bold text-secondary">
+              Image not Found
             </div>
           )}
+       </div>
           <div className="hidden xl:block mt-2 space-y-2">
             {data?.casts?.cast?.length !== 0 && (
               <MiniCard
@@ -110,7 +112,7 @@ function MovieDetails() {
         </div>
         {data && (
           <div className="col-span-full xl:col-span-4">
-            <div className="grid grid-cols-3 gap-2 sm:gap-4 w-full overflow-clip rounded-2xl p-4 bg-secondary">
+            <div className="grid grid-cols-3 gap-2 sm:gap-4 w-full overflow-clip rounded-md p-4 bg-secondary">
               {data?.details?.poster_path ? (
                 <img
                   src={`https://image.tmdb.org/t/p/w500/${data?.details?.poster_path}`}
@@ -144,17 +146,21 @@ function MovieDetails() {
                     .join(", ")}
                 </div>
 
-                <div className="hidden sm:block">
-                  <span className="font-bold">Overview: </span>
-                  {data?.details?.overview}
-                </div>
+                {data?.details?.overview && (
+                  <div className="hidden sm:block">
+                    <span className="font-bold">Overview: </span>
+                    {data?.details?.overview}
+                  </div>
+                )}
               </div>
               <div className="col-span-full text-highlight">
-                <div className="sm:hidden">
-                  <span className="font-bold">Overview:</span>{" "}
-                  {data?.details?.overview}
-                </div>
-                <div className="border w-full py-2 text-center rounded-md">
+                {data?.details?.overview && (
+                  <div className="sm:hidden">
+                    <span className="font-bold">Overview:</span>{" "}
+                    {data?.details?.overview}
+                  </div>
+                )}
+                <div className="border w-full py-2 text-center rounded-sm">
                   Save to favorite
                 </div>
               </div>

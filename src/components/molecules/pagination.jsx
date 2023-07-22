@@ -27,7 +27,7 @@ export default function Pagination(p) {
   }
 
   return (
-    <div className="flex items-center justify-between border-t border-highlight bg-secondary rounded-2xl p-4">
+    <div className="flex items-center justify-between border-t border-highlight bg-secondary rounded-md p-4">
       <div className="flex flex-1 justify-between sm:hidden">
         <div
           onClick={() => {
@@ -40,7 +40,7 @@ export default function Pagination(p) {
               );
             }
           }}
-          className="relative inline-flex items-center rounded-md border border-highlight hover:text-secondary text-highlight px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50"
+          className="relative inline-flex items-center rounded-sm border border-highlight hover:text-secondary text-highlight px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50"
         >
           Previous
         </div>
@@ -55,7 +55,7 @@ export default function Pagination(p) {
               );
             }
           }}
-          className="relative ml-3 inline-flex items-center rounded-md border border-highlight hover:text-secondary text-highlight px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50"
+          className="relative ml-3 inline-flex items-center rounded-sm border border-highlight hover:text-secondary text-highlight px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50"
         >
           Next
         </div>
@@ -77,7 +77,7 @@ export default function Pagination(p) {
         <div>
           {totalResult && (
             <nav
-              className="isolate inline-flex -space-x-px rounded-2xl shadow-sm"
+              className="isolate inline-flex -space-x-px rounded-sm overflow-clip shadow-sm"
               aria-label="Pagination"
             >
               <div
@@ -89,7 +89,7 @@ export default function Pagination(p) {
                         end: prev.end - 5,
                       }))
                 }
-                className="relative cursor-pointer inline-flex items-center rounded-l-md px-2 py-2 text-gray-400 ring-1 ring-inset ring-highlight hover:bg-highlight  text-highlight text-sm font-bold hover:text-secondary focus:z-20 focus:outline-offset-0"
+                className="relative cursor-pointer inline-flex items-center rounded-l-sm px-2 py-2 text-gray-400 ring-1 ring-inset ring-highlight hover:bg-highlight  text-highlight text-sm font-bold hover:text-secondary focus:z-20 focus:outline-offset-0"
               >
                 {"<-"}
               </div>
@@ -126,7 +126,7 @@ export default function Pagination(p) {
                     end: prev.end + 5,
                   }))
                 }
-                className="relative cursor-pointer inline-flex items-center rounded-r-md px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-highlight  text-highlight text-sm font-bold hover:text-secondary focus:z-20 focus:outline-offset-0"
+                className="relative cursor-pointer inline-flex items-center rounded-r-sm px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-highlight  text-highlight text-sm font-bold hover:text-secondary focus:z-20 focus:outline-offset-0"
               >
                 {"->"}
               </div>

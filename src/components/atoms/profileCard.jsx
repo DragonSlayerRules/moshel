@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import SkeletonCard from "../protons/skeletonCard";
+import SkeletonLandscape from "../protons/skeletonLandscape";
 
 function ProfileCard({ data }) {
   return (
@@ -35,7 +35,7 @@ function ProfileCard({ data }) {
           </Link>
         ))
       ) : (
-        <SkeletonCard />
+        <SkeletonLandscape width='full'/>
       )}
     </>
   );

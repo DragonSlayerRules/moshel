@@ -71,7 +71,7 @@ function PersonDetails() {
               className="w-1/2 sm:w-full mx-auto aspect-square sm:aspect-[3/4] object-cover rounded-md"
             />
           ) : (
-            <div className="aspect-[3/4] bg-gray-400 font-bold text-2xl flex items-center justify-center rounded-md">
+            <div className="aspect-square sm:aspect-[3/4] bg-gray-400 font-bold text-2xl flex items-center justify-center rounded-md">
               Image Not Found
             </div>
           )}

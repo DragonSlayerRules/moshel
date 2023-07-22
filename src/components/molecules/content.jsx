@@ -18,9 +18,7 @@ function Content({ param }) {
 
   return (
     <SectionWrap param={param}>
-     
-              <MovieCard data={movieData} type="movie" location="front" />
-          
+      <MovieCard data={movieData} type="movie" location="front" />
     </SectionWrap>
   );
 }
