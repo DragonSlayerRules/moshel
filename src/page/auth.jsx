@@ -1,9 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import logo from "../assets/frameBlack.png";
 import { Link, useParams } from "react-router-dom";
+import { post } from "../services/service";
 
 function Auth() {
   const params = useParams();
+  const [data, setData] = useState();
+
+const handleSubmit = (e) =>{
+  e.preventDefault()
+  post
+    .postRegister(data, params.type)
+    .then((response) => console.log(response))
+    .catch((error) => console.error(error));
+}
   return (
     <>
       <div className="flex min-h-full flex-1 flex-col justify-center py-12 container mx-auto px-8 mb-80 mt-40">
@@ -16,7 +26,7 @@ function Auth() {
           </h2>
         </div>
         <div className="mt-5 sm:mx-auto sm:w-full sm:max-w-sm">
-          <form className="space-y-6" action="#" method="POST">
+          <form className="space-y-6" action="#" onSubmit={handleSubmit}>
             <div>
               <label
                 htmlFor="email"
@@ -28,9 +38,12 @@ function Auth() {
                 <input
                   id="email"
                   name="email"
-                  type="email"
+                  type="text"
                   autoComplete="email"
                   required
+                  onChange={(e) =>
+                    setData((prev) => ({ ...prev, username: e.target.value }))
+                  }
                   className="block w-full rounded-md px-2 border-0 py-1.5 text-secondary ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-secondary sm:text-sm"
                 />
               </div>
@@ -60,6 +73,9 @@ function Auth() {
                   type="password"
                   autoComplete="current-password"
                   required
+                  onChange={(e) =>
+                    setData((prev) => ({ ...prev, password: e.target.value }))
+                  }
                   className="block w-full rounded-md px-2 border-0 py-1.5 text-secondary ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-secondary sm:text-sm"
                 />
               </div>
@@ -89,6 +105,12 @@ function Auth() {
                     type="password"
                     autoComplete="current-password"
                     required
+                    onChange={(e) =>
+                      setData((prev) => ({
+                        ...prev,
+                        rePassword: e.target.value,
+                      }))
+                    }
                     className="block w-full rounded-md px-2 border-0 py-1.5 text-secondary ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-secondary sm:text-sm"
                   />
                 </div>

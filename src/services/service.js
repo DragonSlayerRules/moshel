@@ -128,6 +128,42 @@ const getTrending = async (params) => {
   }
 };
 
+const postRegister = async (data, param) => {
+  try {
+    const response = await fetch(
+      `https://moshel-api-production.up.railway.app/user/${
+        param === "login" ? "login" : "register"
+      }`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(
+          param === "login"
+            ? {
+                username: data.username,
+                password: data.password,
+              }
+            : {
+                username: data.username,
+                password: data.password,
+                confirm_password: data.rePassword,
+              }
+        ),
+      }
+    );
+    const response_1 = response.json();
+    return response_1;
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+const post = {
+  postRegister,
+};
+
 const get = {
   getMovie,
   getGenres,
@@ -138,4 +174,4 @@ const get = {
   getTrending,
 };
 
-export { get };
+export { get, post };
