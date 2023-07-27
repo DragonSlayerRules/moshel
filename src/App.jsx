@@ -10,6 +10,7 @@ import PersonDetails from "./page/personDetails";
 import Auth from "./page/auth";
 import Test from "./page/test";
 import Discover from "./page/discover";
+import Saved from "./page/saved";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Route path="/discover/:type/:page" element={<Discover />} />
         <Route path="/profile/:userId" element={<PersonDetails />} />
         <Route path="/auth/:type" element={<Auth />} />
+        <Route path="/saved" element={<Saved />} />
         <Route path="*" element={<Error />} />
         <Route path="/test" element={<Test />} />
       </Routes>

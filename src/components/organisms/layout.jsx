@@ -54,6 +54,12 @@ function Layout({ children }) {
           </div>
           <div className="flex gap-4">
             <Link
+              to="/saved"
+              className="border border-highligt text-highlight h-10 px-2 sm:px-4 text-base sm:text-lg flex items-center rounded-md"
+            >
+              SAVED
+            </Link>
+            <Link
               to="/auth/login"
               className="border border-highligt text-highlight h-10 px-2 sm:px-4 text-base sm:text-lg flex items-center rounded-md"
             >

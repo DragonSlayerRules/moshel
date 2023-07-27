@@ -140,7 +140,7 @@ const handleSubmit = (e) =>{
         </div>
 
         <div className="text-xl text-black mx-auto w-1/3 mt-20 text-center">
-          Login and register are still in progress, the developer decide to
+          Login and register are now fully working! the developer decide to
           collab with{" "}
           <a
             href="https://www.linkedin.com/in/eric-pradana/"
@@ -150,7 +150,7 @@ const handleSubmit = (e) =>{
           >
             Eric Pradana
           </a>{" "}
-          as backend developer
+          as backend developer. We are still working on saved favorite
         </div>
       </div>
     </>
